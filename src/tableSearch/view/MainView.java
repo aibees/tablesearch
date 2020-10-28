@@ -1,10 +1,10 @@
 package tableSearch.view;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,8 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
+import javax.swing.SwingConstants;
 
 public class MainView extends JFrame {
 	
@@ -30,15 +31,18 @@ public class MainView extends JFrame {
 		//table = new JLabel();
 		
 		setTitle("Table Search");
-		setSize(VIEW_WIDTH, VIEW_HEIGHT);
-		//setResizable(false);
+		setResizable(false);
 		setLocation(800, 450);
-		setVisible(true);
 		
 		JPanel mainPanel = new JPanel();
 		setMainPanel(mainPanel);
-		
 		add(mainPanel);
+
+		setSize(VIEW_WIDTH, VIEW_HEIGHT);
+		pack();
+		setVisible(true);
+
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	private void setMainPanel(JPanel panel) {
@@ -105,6 +109,7 @@ public class MainView extends JFrame {
 	private JPanel getLeftPanel() {
 		// Panel Setting
 		JPanel panel = new JPanel();
+		panel.setLayout(new BorderLayout());
 		//panel.setBorder(BorderFactory.createEmptyBorder(2, 10, 2, 10));
 		
 		// Scroll Menu List
@@ -118,8 +123,17 @@ public class MainView extends JFrame {
 						 "NAP603T", "NAP610T"};
 		JList<String> result = new JList<String>(dset);
 		JScrollPane scroll = new JScrollPane(result);
-		scroll.setPreferredSize(new Dimension(90, 400));
+		scroll.setPreferredSize(new Dimension(90, 390));
 		panel.add(scroll);
+
+		JButton newTable = new JButton("새로만들기");
+		newTable.setBackground(Color.darkGray);
+		newTable.setForeground(Color.getHSBColor(360, 0, 100));
+		newTable.setFocusPainted(false);
+		newTable.setBorderPainted(false);
+		newTable.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panel.add(newTable, BorderLayout.SOUTH);
+
 		return panel;
 	}
 	/**
@@ -130,23 +144,53 @@ public class MainView extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		panel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-		
-		// Grid Panel
-		JPanel gridPanel = new JPanel();
-		gridPanel.setLayout(new GridBagLayout());
-		gridPanel.setBackground(Color.white);
-		gridPanel.setBorder(BorderFactory.createCompoundBorder(
-							new LineBorder(Color.lightGray),
-							new LineBorder(Color.darkGray)
-						   ));
-		
-		// set Inner Panel
-		JLabel msg = new JLabel("hello");
-		gridPanel.add(msg);
-		
+		panel.setBackground(Color.white);
 		// add inner panel
-		panel.add(gridPanel, BorderLayout.CENTER);
+		panel.add(getInnerPanel(), BorderLayout.CENTER);
 		
+		return panel;
+	}
+
+	private JPanel getInnerPanel() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBorder(BorderFactory.createCompoundBorder(
+						BorderFactory.createLineBorder(Color.DARK_GRAY, 1),
+						BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1)
+						));
+
+		// set Inner Panel
+		// title Panel
+		JPanel titlePanel = new JPanel();
+		titlePanel.setLayout(new BorderLayout());
+		titlePanel.setBackground(Color.white);
+
+		JLabel title = new JLabel("테이블 이름이 들어갈 자리", SwingConstants.CENTER);
+		title.setBorder(BorderFactory.createLineBorder(Color.black));
+		title.setPreferredSize(new Dimension(15, 30));
+		titlePanel.add(title, BorderLayout.CENTER);
+
+
+
+		// detail Panel
+		JPanel detailPanel = new JPanel();
+		// comments Panel
+		JPanel commentPanel = new JPanel();
+		commentPanel.setLayout(new BorderLayout());
+		commentPanel.setBackground(Color.white);
+
+		JTextArea comment = new JTextArea();
+		comment.setLineWrap(true);
+		JScrollPane csc = new JScrollPane(comment);
+		csc.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		csc.setPreferredSize(new Dimension(30, 110));
+		commentPanel.add(csc);
+
+		panel.add(titlePanel, BorderLayout.NORTH);
+		panel.add(commentPanel, BorderLayout.SOUTH);
+
 		return panel;
 	}
 	
@@ -167,5 +211,16 @@ public class MainView extends JFrame {
 		panel.add(footer);
 		
 		return panel;
+	}
+
+	// util method
+	private GridBagConstraints setGridConst(int x, int y, int w, int h) {
+		GridBagConstraints c = new GridBagConstraints();	
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = x;
+		c.gridy = y;
+		c.gridwidth = w;
+		c.gridheight = h;
+		return c;
 	}
 }
