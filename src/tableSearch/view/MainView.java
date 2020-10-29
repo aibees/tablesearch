@@ -1,6 +1,7 @@
 package tableSearch.view;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -9,8 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -24,8 +27,9 @@ public class MainView extends JFrame {
 	
 	private static final long serialVersionUID = 26351915L;
 	private final int VIEW_HEIGHT = 550;
-	private final int VIEW_WIDTH  = 500;
-	
+	private final int VIEW_WIDTH  = 520;
+	private GridBagConstraints gbc = new GridBagConstraints();
+
 	public MainView() {
 		
 		//table = new JLabel();
@@ -34,12 +38,18 @@ public class MainView extends JFrame {
 		setResizable(false);
 		setLocation(800, 450);
 		
+		// favicon
+		String pwd = getClass().getResource(".").toString();
+		String fvcPath = pwd.substring(6) + "../img/favicon.png";
+		ImageIcon favicon = new ImageIcon(fvcPath);
+		setIconImage(favicon.getImage());
+
 		JPanel mainPanel = new JPanel();
 		setMainPanel(mainPanel);
 		add(mainPanel);
 
 		setSize(VIEW_WIDTH, VIEW_HEIGHT);
-		pack();
+		//pack();
 		setVisible(true);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,6 +109,15 @@ public class MainView extends JFrame {
 				System.out.println("검색어 : " + search.getText().toUpperCase());
 			}
 		});
+
+		JButton save = new JButton("저장");
+		save.setBackground(Color.darkGray);
+		save.setForeground(Color.getHSBColor(360, 0, 100));
+		save.setFocusPainted(false);
+		save.setBorderPainted(false);
+		save.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		save.setSize(15, 10);
+		panel.add(save);
 		return panel;
 	}
 	
@@ -132,7 +151,7 @@ public class MainView extends JFrame {
 		newTable.setFocusPainted(false);
 		newTable.setBorderPainted(false);
 		newTable.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		panel.add(newTable, BorderLayout.SOUTH);
+		panel.add(newTable, BorderLayout.NORTH);
 
 		return panel;
 	}
@@ -143,8 +162,8 @@ public class MainView extends JFrame {
 	private JPanel getCenterPanel() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
-		panel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-		panel.setBackground(Color.white);
+		panel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+		panel.setBackground(Color.getHSBColor(55, 22, 91));
 		// add inner panel
 		panel.add(getInnerPanel(), BorderLayout.CENTER);
 		
@@ -167,19 +186,21 @@ public class MainView extends JFrame {
 		titlePanel.setLayout(new BorderLayout());
 		titlePanel.setBackground(Color.white);
 
-		JLabel title = new JLabel("테이블 이름이 들어갈 자리", SwingConstants.CENTER);
+		JLabel title = new JLabel("-", SwingConstants.CENTER);
 		title.setBorder(BorderFactory.createLineBorder(Color.black));
 		title.setPreferredSize(new Dimension(15, 30));
 		titlePanel.add(title, BorderLayout.CENTER);
 
 
-
 		// detail Panel
 		JPanel detailPanel = new JPanel();
+		setDetailPanel(detailPanel);
+
 		// comments Panel
 		JPanel commentPanel = new JPanel();
 		commentPanel.setLayout(new BorderLayout());
 		commentPanel.setBackground(Color.white);
+		commentPanel.setBorder(BorderFactory.createLineBorder(Color.black, 2));
 
 		JTextArea comment = new JTextArea();
 		comment.setLineWrap(true);
@@ -189,9 +210,119 @@ public class MainView extends JFrame {
 		commentPanel.add(csc);
 
 		panel.add(titlePanel, BorderLayout.NORTH);
+		panel.add(detailPanel, BorderLayout.CENTER);
 		panel.add(commentPanel, BorderLayout.SOUTH);
 
 		return panel;
+	}
+
+	private void setDetailPanel(JPanel panel) {
+		GridBagLayout gbl = new GridBagLayout();
+		panel.setLayout(gbl);
+		panel.setBackground(Color.WHITE);
+		panel.setPreferredSize(new Dimension(300, 300));
+		gbc.weightx = 1.0;
+		gbc.weighty = 1.0;
+
+		// 주요정보
+		JLabel header = new JLabel("주요정보", SwingConstants.CENTER);
+		header.setBackground(Color.LIGHT_GRAY);
+		header.setOpaque(true);
+		header.setBorder(BorderFactory.createLineBorder(Color.black));
+
+		JLabel lb_pk = new JLabel("PK", SwingConstants.CENTER);
+		lb_pk.setBackground(Color.LIGHT_GRAY);
+		lb_pk.setOpaque(true);
+		lb_pk.setBorder(BorderFactory.createLineBorder(Color.black));
+
+		JLabel tx_pk = new JLabel();
+		tx_pk.setBackground(Color.WHITE);
+		tx_pk.setOpaque(true);
+		tx_pk.setBorder(BorderFactory.createLineBorder(Color.black));
+
+		JLabel lb_ts = new JLabel("Table Space", SwingConstants.CENTER);
+		lb_ts.setBackground(Color.LIGHT_GRAY);
+		lb_ts.setOpaque(true);
+		lb_ts.setBorder(BorderFactory.createLineBorder(Color.black));
+
+		JLabel tx_ts = new JLabel();
+		tx_ts.setBackground(Color.WHITE);
+		tx_ts.setOpaque(true);
+		tx_ts.setBorder(BorderFactory.createLineBorder(Color.black));
+
+		// 칼럼
+		JLabel column = new JLabel("칼럼", SwingConstants.CENTER);
+		column.setBackground(Color.LIGHT_GRAY);
+		column.setOpaque(true);
+		column.setBorder(BorderFactory.createLineBorder(Color.black));
+
+		// th-컬럼명
+		JLabel th_name = new JLabel("이름", SwingConstants.CENTER);
+		th_name.setBackground(Color.LIGHT_GRAY);
+		th_name.setOpaque(true);
+		th_name.setBorder(BorderFactory.createLineBorder(Color.black));
+
+		// th-설명
+		JLabel th_cmt = new JLabel("설명", SwingConstants.CENTER);
+		th_cmt.setBackground(Color.LIGHT_GRAY);
+		th_cmt.setOpaque(true);
+		th_cmt.setBorder(BorderFactory.createLineBorder(Color.black));
+
+		// th-타입
+		JLabel th_type = new JLabel("타입", SwingConstants.CENTER);
+		th_type.setBackground(Color.LIGHT_GRAY);
+		th_type.setOpaque(true);
+		th_type.setBorder(BorderFactory.createLineBorder(Color.black));
+
+		// th-비고
+		JLabel th_oth = new JLabel("비고", SwingConstants.CENTER);
+		th_oth.setBackground(Color.LIGHT_GRAY);
+		th_oth.setOpaque(true);
+		th_oth.setBorder(BorderFactory.createLineBorder(Color.black));
+		
+		JPanel list = new JPanel();
+		list.setBackground(Color.WHITE);
+		list.setOpaque(true);
+		list.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
+		setColumnList(list);
+
+		// 주요정보
+		setGridConst(gbl, header, 0, 0, 5, 1, 1.0f, 0.03f);
+		panel.add(header);
+		// PK_LABEL
+		setGridConst(gbl, lb_pk, 0, 1, 1, 1, 0.1f, 0.03f);
+		panel.add(lb_pk);
+		// PK_TEXT
+		setGridConst(gbl, tx_pk, 1, 1, 4, 1, 0.9f, 0.03f);
+		panel.add(tx_pk);
+		// TableSpace_LABEL
+		setGridConst(gbl, lb_ts, 0, 2, 1, 1, 0.1f, 0.03f);
+		panel.add(lb_ts);
+		// TableSpace_TEXT
+		setGridConst(gbl, tx_ts, 1, 2, 4, 1, 0.9f, 0.03f);
+		panel.add(tx_ts);
+		// 컬럼정보
+		setGridConst(gbl, column, 0, 3, 5, 1, 1.0f, 0.04f);
+		panel.add(column);
+		// th_name
+		setGridConst(gbl, th_name, 0, 4, 1, 1, 0.1f, 0.03f);
+		panel.add(th_name);
+		// th_cmt
+		setGridConst(gbl, th_cmt, 1, 4, 1, 1, 0.25f, 0.03f);
+		panel.add(th_cmt);
+		// th_type
+		setGridConst(gbl, th_type, 2, 4, 1, 1, 0.25f, 0.03f);
+		panel.add(th_type);
+		// th_oth
+		setGridConst(gbl, th_oth, 3, 4, 2, 1, 0.4f, 0.03f);
+		panel.add(th_oth);
+		// column list
+		setGridConst(gbl, list, 0, 5, 5, 1, 1.0f, 0.85f);
+		panel.add(list);
+	}
+
+	private void setColumnList(JPanel panel) {
+
 	}
 	
 	/**
@@ -214,13 +345,14 @@ public class MainView extends JFrame {
 	}
 
 	// util method
-	private GridBagConstraints setGridConst(int x, int y, int w, int h) {
-		GridBagConstraints c = new GridBagConstraints();	
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = x;
-		c.gridy = y;
-		c.gridwidth = w;
-		c.gridheight = h;
-		return c;
+	private void setGridConst(GridBagLayout gbl, JComponent c, int x, int y, int gw, int gh, float w, float h) {
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.gridx = x;
+		gbc.gridy = y;
+		gbc.gridwidth = gw;
+		gbc.gridheight = gh;
+		gbc.weightx = w;
+		gbc.weighty = h;
+		gbl.setConstraints(c, gbc);
 	}
 }

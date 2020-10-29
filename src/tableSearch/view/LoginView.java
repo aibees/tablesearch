@@ -3,6 +3,7 @@ package tableSearch.view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,7 +32,14 @@ public class LoginView extends JFrame {
 		setTitle("LOGIN");
 		setSize(280, 150);
 		setResizable(false);
-		setLocation(800, 450);
+        setLocation(800, 450);
+        		
+		// favicon
+		String pwd = getClass().getResource(".").toString();
+		String fvcPath = pwd.substring(6) + "../img/favicon.png";
+		ImageIcon favicon = new ImageIcon(fvcPath);
+		setIconImage(favicon.getImage());
+
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
