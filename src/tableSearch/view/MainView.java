@@ -23,6 +23,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import tableSearch.listener.mouse.ListClickedListener;
+
 public class MainView extends JFrame {
 	
 	private static final long serialVersionUID = 26351915L;
@@ -141,6 +143,8 @@ public class MainView extends JFrame {
 						 "NAP103T", "NAP601T", "NAP602T",
 						 "NAP603T", "NAP610T"};
 		JList<String> result = new JList<String>(dset);
+		result.addMouseListener(new ListClickedListener());
+
 		JScrollPane scroll = new JScrollPane(result);
 		scroll.setPreferredSize(new Dimension(90, 390));
 		panel.add(scroll);
