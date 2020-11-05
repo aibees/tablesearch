@@ -1,0 +1,775 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 32744 bytes for ChunkPool::allocate
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:272), pid=13964, tid=0x0000000000004ea4
+#
+# JRE version: OpenJDK Runtime Environment (8.0_242-b08) (build 1.8.0_242-b08)
+# Java VM: OpenJDK 64-Bit Server VM (25.242-b08 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00000000061e2800):  JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=20132, stack(0x00000000224c0000,0x00000000225c0000)]
+
+Stack: [0x00000000224c0000,0x00000000225c0000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+Current CompileTask:
+C2:  18820 1613   !   4       sun.awt.PostEventQueue::flush (168 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000000002521d800 JavaThread "TimerQueue" daemon [_thread_blocked, id=48244, stack(0x00000000273e0000,0x00000000274e0000)]
+  0x0000000007f9e000 JavaThread "DestroyJavaVM" [_thread_blocked, id=41172, stack(0x0000000002550000,0x0000000002650000)]
+  0x0000000023071800 JavaThread "AWT-EventQueue-0" [_thread_blocked, id=48420, stack(0x00000000263e0000,0x00000000264e0000)]
+  0x00000000063be800 JavaThread "AWT-Windows" daemon [_thread_in_native, id=24800, stack(0x0000000023420000,0x0000000023520000)]
+  0x00000000063bd800 JavaThread "AWT-Shutdown" [_thread_blocked, id=25784, stack(0x0000000023320000,0x0000000023420000)]
+  0x00000000063bd000 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=14588, stack(0x00000000231c0000,0x00000000232c0000)]
+  0x000000000624b800 JavaThread "Service Thread" daemon [_thread_blocked, id=49440, stack(0x00000000227c0000,0x00000000228c0000)]
+  0x00000000061e7000 JavaThread "C1 CompilerThread2" daemon [_thread_in_native, id=16084, stack(0x00000000226c0000,0x00000000227c0000)]
+  0x00000000061e6800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=50132, stack(0x00000000225c0000,0x00000000226c0000)]
+=>0x00000000061e2800 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=20132, stack(0x00000000224c0000,0x00000000225c0000)]
+  0x00000000060f0800 JavaThread "JDWP Command Reader" daemon [_thread_in_native, id=44680, stack(0x00000000223c0000,0x00000000224c0000)]
+  0x00000000060ed800 JavaThread "JDWP Event Helper Thread" daemon [_thread_blocked, id=49668, stack(0x0000000007870000,0x0000000007970000)]
+  0x00000000060cc000 JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_blocked, id=9504, stack(0x0000000007770000,0x0000000007870000)]
+  0x00000000060dc000 JavaThread "Attach Listener" daemon [_thread_blocked, id=48904, stack(0x0000000007560000,0x0000000007660000)]
+  0x00000000060d9000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=48380, stack(0x0000000007460000,0x0000000007560000)]
+  0x000000000557e000 JavaThread "Finalizer" daemon [_thread_blocked, id=49808, stack(0x0000000006b80000,0x0000000006c80000)]
+  0x0000000005579800 JavaThread "Reference Handler" daemon [_thread_blocked, id=47772, stack(0x0000000006a80000,0x0000000006b80000)]
+
+Other Threads:
+  0x0000000005571800 VMThread [stack: 0x0000000006980000,0x0000000006a80000] [id=46200]
+  0x0000000006253800 WatcherThread [stack: 0x00000000228c0000,0x00000000229c0000] [id=48588]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x0000000685200000, size: 5038 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x00000007c0000000
+
+Heap:
+ PSYoungGen      total 94208K, used 46232K [0x0000000757100000, 0x000000075da00000, 0x00000007c0000000)
+  eden space 80896K, 57% used [0x0000000757100000,0x0000000759e262b8,0x000000075c000000)
+  from space 13312K, 0% used [0x000000075cd00000,0x000000075cd00000,0x000000075da00000)
+  to   space 13312K, 0% used [0x000000075c000000,0x000000075c000000,0x000000075cd00000)
+ ParOldGen       total 216064K, used 0K [0x0000000685200000, 0x0000000692500000, 0x0000000757100000)
+  object space 216064K, 0% used [0x0000000685200000,0x0000000685200000,0x0000000692500000)
+ Metaspace       used 15623K, capacity 15834K, committed 16128K, reserved 1062912K
+  class space    used 1661K, capacity 1748K, committed 1792K, reserved 1048576K
+
+Card table byte_map: [0x0000000002d30000,0x0000000003710000] byte_map_base: 0xffffffffff907000
+
+Marking Bits: (ParMarkBitMap*) 0x0000000069f7ff30
+ Begin Bits: [0x0000000017150000, 0x000000001c008000)
+ End Bits:   [0x000000001c008000, 0x0000000020ec0000)
+
+Polling page: 0x0000000002650000
+
+CodeCache: size=245760Kb used=5729Kb max_used=5729Kb free=240030Kb
+ bounds [0x0000000008150000, 0x00000000086f0000, 0x0000000017150000]
+ total_blobs=2117 nmethods=1614 adapters=424
+ compilation: enabled
+
+Compilation events (250 events):
+Event: 13.331 Thread 0x00000000061e7000 nmethod 1485 0x000000000867c450 code [0x000000000867c5e0, 0x000000000867cab8]
+Event: 13.331 Thread 0x00000000061e7000 1486       3       javax.swing.JScrollBar::getMinimum (10 bytes)
+Event: 13.331 Thread 0x00000000061e7000 nmethod 1486 0x000000000867bf90 code [0x000000000867c100, 0x000000000867c350]
+Event: 13.331 Thread 0x00000000061e7000 1487       3       javax.swing.plaf.basic.BasicScrollBarUI::getValue (19 bytes)
+Event: 13.331 Thread 0x00000000061e7000 nmethod 1487 0x000000000867b950 code [0x000000000867bac0, 0x000000000867be30]
+Event: 13.331 Thread 0x00000000061e2800 1488       4       javax.swing.JComponent::setFlag (34 bytes)
+Event: 13.332 Thread 0x00000000061e2800 nmethod 1488 0x000000000867b710 code [0x000000000867b840, 0x000000000867b8d8]
+Event: 13.369 Thread 0x00000000061e6800 1489       4       sun.java2d.pipe.Region::isInsideQuickCheck (57 bytes)
+Event: 13.369 Thread 0x00000000061e7000 1490       3       javax.swing.RepaintManager::paint (93 bytes)
+Event: 13.370 Thread 0x00000000061e7000 nmethod 1490 0x00000000086827d0 code [0x00000000086829a0, 0x00000000086832f8]
+Event: 13.370 Thread 0x00000000061e7000 1491   !   3       java.awt.EventQueue::isDispatchThreadImpl (99 bytes)
+Event: 13.370 Thread 0x00000000061e7000 nmethod 1491 0x0000000008680650 code [0x0000000008680820, 0x0000000008680f88]
+Event: 13.370 Thread 0x00000000061e7000 1492       3       javax.swing.JViewport::repaint (50 bytes)
+Event: 13.370 Thread 0x00000000061e6800 nmethod 1489 0x0000000008680290 code [0x00000000086803e0, 0x0000000008680518]
+Event: 13.371 Thread 0x00000000061e7000 nmethod 1492 0x0000000008689c90 code [0x0000000008689ea0, 0x000000000868ab48]
+Event: 13.552 Thread 0x00000000061e7000 1493       3       sun.reflect.UnsafeBooleanFieldAccessorImpl::getBoolean (17 bytes)
+Event: 13.553 Thread 0x00000000061e7000 nmethod 1493 0x00000000086816d0 code [0x00000000086818a0, 0x0000000008682338]
+Event: 13.628 Thread 0x00000000061e7000 1495       3       java.awt.event.MouseEvent$1::setCausedByTouchEvent (7 bytes)
+Event: 13.628 Thread 0x00000000061e7000 nmethod 1495 0x00000000086812d0 code [0x0000000008681440, 0x00000000086815f0]
+Event: 13.689 Thread 0x00000000061e7000 1496       3       java.awt.LightweightDispatcher::retargetMouseEvent (372 bytes)
+Event: 13.691 Thread 0x00000000061e7000 nmethod 1496 0x000000000868b310 code [0x000000000868b6a0, 0x000000000868e2a8]
+Event: 13.881 Thread 0x00000000061e7000 1497       3       javax.swing.plaf.basic.BasicScrollBarUI::access$102 (7 bytes)
+Event: 13.881 Thread 0x00000000061e7000 nmethod 1497 0x000000000867b3d0 code [0x000000000867b520, 0x000000000867b670]
+Event: 13.881 Thread 0x00000000061e7000 1498       3       javax.swing.plaf.basic.BasicScrollBarUI$ModelListener::stateChanged (52 bytes)
+Event: 13.881 Thread 0x00000000061e7000 nmethod 1498 0x000000000867f5d0 code [0x000000000867f760, 0x000000000867fc88]
+Event: 13.881 Thread 0x00000000061e7000 1499       3       javax.swing.JScrollBar$ModelListener::stateChanged (58 bytes)
+Event: 13.881 Thread 0x00000000061e7000 nmethod 1499 0x000000000868f250 code [0x000000000868f3e0, 0x000000000868f9c8]
+Event: 13.901 Thread 0x00000000061e7000 1500   !   3       java.awt.Container::preferredSize (88 bytes)
+Event: 13.902 Thread 0x00000000061e7000 nmethod 1500 0x000000000868fc50 code [0x000000000868fe20, 0x00000000086908f8]
+Event: 13.969 Thread 0x00000000061e7000 1501       3       javax.swing.plaf.basic.BasicScrollPaneUI::syncScrollPaneWithViewport (415 bytes)
+Event: 13.971 Thread 0x00000000061e7000 nmethod 1501 0x0000000008690cd0 code [0x0000000008691000, 0x0000000008692958]
+Event: 13.977 Thread 0x00000000061e7000 1502       3       javax.swing.JViewport::toViewCoordinates (9 bytes)
+Event: 13.977 Thread 0x00000000061e7000 nmethod 1502 0x0000000008693a50 code [0x0000000008693bc0, 0x0000000008693ef0]
+Event: 13.981 Thread 0x00000000061e7000 1503  s    3       javax.swing.RepaintManager::addInvalidComponent (111 bytes)
+Event: 13.982 Thread 0x00000000061e7000 nmethod 1503 0x00000000086940d0 code [0x0000000008694340, 0x0000000008695448]
+Event: 13.984 Thread 0x00000000061e7000 1504       3       java.awt.Dimension::<init> (7 bytes)
+Event: 13.984 Thread 0x00000000061e7000 nmethod 1504 0x0000000008695d50 code [0x0000000008695ec0, 0x0000000008696130]
+Event: 13.997 Thread 0x00000000061e7000 1505       3       java.awt.Component::processComponentEvent (82 bytes)
+Event: 13.998 Thread 0x00000000061e7000 nmethod 1505 0x0000000008696250 code [0x0000000008696400, 0x00000000086969d8]
+Event: 14.000 Thread 0x00000000061e7000 1506       1       sun.font.FontDesignMetrics::getAscent (10 bytes)
+Event: 14.001 Thread 0x00000000061e7000 nmethod 1506 0x0000000008696bd0 code [0x0000000008696d20, 0x0000000008696e70]
+Event: 14.001 Thread 0x00000000061e2800 1507       4       sun.java2d.SunGraphics2D::setFont (105 bytes)
+Event: 14.002 Thread 0x00000000061e2800 nmethod 1507 0x0000000008699b90 code [0x0000000008699cc0, 0x0000000008699d98]
+Event: 14.008 Thread 0x00000000061e7000 1508       3       javax.swing.plaf.ComponentUI::paint (1 bytes)
+Event: 14.008 Thread 0x00000000061e7000 nmethod 1508 0x0000000008699890 code [0x00000000086999e0, 0x0000000008699b30]
+Event: 14.009 Thread 0x00000000061e7000 1509       1       javax.swing.plaf.basic.BasicScrollBarUI::getThumbBounds (5 bytes)
+Event: 14.009 Thread 0x00000000061e7000 nmethod 1509 0x00000000086995d0 code [0x0000000008699720, 0x0000000008699830]
+Event: 14.020 Thread 0x00000000061e7000 1510       3       java.awt.Component::setLocation (7 bytes)
+Event: 14.021 Thread 0x00000000061e7000 nmethod 1510 0x0000000008699190 code [0x0000000008699300, 0x0000000008699528]
+Event: 14.021 Thread 0x00000000061e7000 1511   !   3       java.awt.Component::move (39 bytes)
+Event: 14.021 Thread 0x00000000061e7000 nmethod 1511 0x0000000008698890 code [0x0000000008698a20, 0x0000000008698fb8]
+Event: 14.024 Thread 0x00000000061e6800 1512       4       java.util.IdentityHashMap::get (60 bytes)
+Event: 14.024 Thread 0x00000000061e7000 1513       3       sun.java2d.pipe.ValidatePipe::fill (20 bytes)
+Event: 14.025 Thread 0x00000000061e7000 nmethod 1513 0x0000000008697dd0 code [0x0000000008697f80, 0x0000000008698588]
+Event: 14.027 Thread 0x00000000061e6800 nmethod 1512 0x0000000008697810 code [0x0000000008697960, 0x0000000008697ba8]
+Event: 14.029 Thread 0x00000000061e7000 1514       3       java.awt.Container::createChildHierarchyEvents (76 bytes)
+Event: 14.030 Thread 0x00000000061e7000 nmethod 1514 0x000000000869bd50 code [0x000000000869bf40, 0x000000000869c878]
+Event: 14.041 Thread 0x00000000061e7000 1515       3       java.util.HashMap::keySet (25 bytes)
+Event: 14.042 Thread 0x00000000061e7000 nmethod 1515 0x0000000008697150 code [0x00000000086972c0, 0x0000000008697650]
+Event: 14.042 Thread 0x00000000061e7000 1516       3       java.util.HashMap$KeySet::iterator (12 bytes)
+Event: 14.042 Thread 0x00000000061e7000 nmethod 1516 0x000000000869b850 code [0x000000000869b9c0, 0x000000000869bc48]
+Event: 14.048 Thread 0x00000000061e7000 1517       3       java.lang.reflect.Field::getBoolean (51 bytes)
+Event: 14.049 Thread 0x00000000061e7000 nmethod 1517 0x000000000869ae10 code [0x000000000869afe0, 0x000000000869b648]
+Event: 14.052 Thread 0x00000000061e2800 1518       4       javax.swing.RepaintManager::currentManager (37 bytes)
+Event: 14.053 Thread 0x00000000061e2800 nmethod 1518 0x000000000869aad0 code [0x000000000869ac20, 0x000000000869ace8]
+Event: 14.057 Thread 0x00000000061e7000 1519       3       javax.swing.JScrollBar::setValue (49 bytes)
+Event: 14.058 Thread 0x00000000061e7000 nmethod 1519 0x000000000869e790 code [0x000000000869e980, 0x000000000869f2f8]
+Event: 14.058 Thread 0x00000000061e7000 1520       3       javax.swing.DefaultBoundedRangeModel::setValue (66 bytes)
+Event: 14.058 Thread 0x00000000061e7000 nmethod 1520 0x000000000869a4d0 code [0x000000000869a660, 0x000000000869a9c8]
+Event: 14.062 Thread 0x00000000061e7000 1521       3       javax.swing.RepaintManager::collectDirtyComponents (344 bytes)
+Event: 14.064 Thread 0x00000000061e7000 nmethod 1521 0x000000000869f950 code [0x000000000869fc60, 0x00000000086a1bc8]
+Event: 14.064 Thread 0x00000000061e7000 1522       3       sun.awt.image.SunVolatileImage::getFont (43 bytes)
+Event: 14.064 Thread 0x00000000061e7000 nmethod 1522 0x000000000869de50 code [0x000000000869dfe0, 0x000000000869e5d8]
+Event: 14.068 Thread 0x00000000061e7000 1523       3       java.awt.Point::equals (46 bytes)
+Event: 14.068 Thread 0x00000000061e6800 1526   !   4       sun.java2d.SunGraphics2D::validateCompClip (224 bytes)
+Event: 14.068 Thread 0x00000000061e2800 1527       4       sun.java2d.pipe.Region::getIntersectionXYXY (108 bytes)
+Event: 14.068 Thread 0x00000000061e7000 nmethod 1523 0x000000000869d750 code [0x000000000869d8e0, 0x000000000869dd48]
+Event: 14.068 Thread 0x00000000061e7000 1524       3       javax.swing.JViewport::computeBlit (270 bytes)
+Event: 14.069 Thread 0x00000000061e7000 nmethod 1524 0x00000000086a2a50 code [0x00000000086a2c20, 0x00000000086a35f0]
+Event: 14.069 Thread 0x00000000061e7000 1525   !   3       sun.java2d.SunGraphics2D::copyArea (70 bytes)
+Event: 14.070 Thread 0x00000000061e7000 nmethod 1525 0x00000000086a3d50 code [0x00000000086a3f20, 0x00000000086a4828]
+Event: 14.070 Thread 0x00000000061e7000 1530       3       java.awt.event.ComponentAdapter::componentMoved (1 bytes)
+Event: 14.070 Thread 0x00000000061e7000 nmethod 1530 0x0000000008699e50 code [0x0000000008699fa0, 0x000000000869a0f0]
+Event: 14.071 Thread 0x00000000061e2800 nmethod 1527 0x000000000869d210 code [0x000000000869d360, 0x000000000869d578]
+Event: 14.071 Thread 0x00000000061e2800 1529       4       sun.java2d.pipe.Region::isInsideXYXY (39 bytes)
+Event: 14.071 Thread 0x00000000061e2800 nmethod 1529 0x000000000867f350 code [0x000000000867f480, 0x000000000867f518]
+Event: 14.073 Thread 0x00000000061e6800 nmethod 1526 0x00000000086a5910 code [0x00000000086a5a80, 0x00000000086a5ff8]
+Event: 14.077 Thread 0x00000000061e7000 1531       1       javax.swing.plaf.basic.BasicScrollBarUI::getTrackBounds (5 bytes)
+Event: 14.077 Thread 0x00000000061e7000 nmethod 1531 0x000000000869cf50 code [0x000000000869d0a0, 0x000000000869d1b0]
+Event: 14.077 Thread 0x00000000061e7000 1532       3       java.util.HashSet::iterator (13 bytes)
+Event: 14.078 Thread 0x00000000061e7000 nmethod 1532 0x00000000086a53d0 code [0x00000000086a5540, 0x00000000086a5818]
+Event: 14.084 Thread 0x00000000061e7000 1533       3       sun.awt.windows.WComponentPeer::getGraphics (188 bytes)
+Event: 14.085 Thread 0x00000000061e7000 nmethod 1533 0x00000000086a78d0 code [0x00000000086a7b60, 0x00000000086a9068]
+Event: 14.085 Thread 0x00000000061e7000 1534       3       sun.awt.windows.WComponentPeer::getTarget (5 bytes)
+Event: 14.085 Thread 0x00000000061e7000 nmethod 1534 0x00000000086a5090 code [0x00000000086a51e0, 0x00000000086a5350]
+Event: 14.086 Thread 0x00000000061e7000 1535   !   3       sun.awt.windows.WWindowPeer::getTranslucentGraphics (37 bytes)
+Event: 14.086 Thread 0x00000000061e7000 nmethod 1535 0x00000000086a6f90 code [0x00000000086a7120, 0x00000000086a76b8]
+Event: 14.086 Thread 0x00000000061e7000 1536       3       sun.java2d.d3d.D3DScreenUpdateManager::createGraphics (76 bytes)
+Event: 14.086 Thread 0x00000000061e7000 nmethod 1536 0x00000000086a9790 code [0x00000000086a9980, 0x00000000086aa378]
+Event: 14.086 Thread 0x00000000061e7000 1537  s    3       sun.java2d.ScreenUpdateManager::createGraphics (14 bytes)
+Event: 14.087 Thread 0x00000000061e7000 nmethod 1537 0x00000000086a6950 code [0x00000000086a6ac0, 0x00000000086a6e68]
+Event: 14.087 Thread 0x00000000061e7000 1538       3       javax.swing.RepaintManager::useVolatileDoubleBuffer (4 bytes)
+Event: 14.087 Thread 0x00000000061e7000 nmethod 1538 0x00000000086a6610 code [0x00000000086a6760, 0x00000000086a68d0]
+Event: 14.089 Thread 0x00000000061e7000 1539       1       javax.swing.JScrollPane::getViewportBorder (5 bytes)
+Event: 14.089 Thread 0x00000000061e7000 nmethod 1539 0x000000000869cc90 code [0x000000000869cde0, 0x000000000869cef0]
+Event: 14.097 Thread 0x00000000061e7000 1540       1       javax.swing.RepaintManager::access$400 (5 bytes)
+Event: 14.097 Thread 0x00000000061e7000 nmethod 1540 0x00000000086a4d10 code [0x00000000086a4e60, 0x00000000086a4f50]
+Event: 14.106 Thread 0x00000000061e7000 1541       1       javax.swing.JComponent::alwaysOnTop (2 bytes)
+Event: 14.106 Thread 0x00000000061e7000 nmethod 1541 0x00000000086aa750 code [0x00000000086aa8a0, 0x00000000086aa9b0]
+Event: 14.109 Thread 0x00000000061e7000 1542       1       javax.swing.JScrollPane::getVerticalScrollBarPolicy (5 bytes)
+Event: 14.109 Thread 0x00000000061e7000 nmethod 1542 0x00000000086aaa10 code [0x00000000086aab60, 0x00000000086aac70]
+Event: 14.109 Thread 0x00000000061e7000 1544       3       java.awt.Rectangle::getSize (16 bytes)
+Event: 14.109 Thread 0x00000000061e7000 nmethod 1544 0x00000000086aacd0 code [0x00000000086aae40, 0x00000000086ab110]
+Event: 14.109 Thread 0x00000000061e7000 1543       1       javax.swing.JScrollPane::getHorizontalScrollBarPolicy (5 bytes)
+Event: 14.109 Thread 0x00000000061e7000 nmethod 1543 0x00000000086ab250 code [0x00000000086ab3a0, 0x00000000086ab4b0]
+Event: 14.112 Thread 0x00000000061e6800 1545       4       java.awt.geom.AffineTransform::translate (547 bytes)
+Event: 14.113 Thread 0x00000000061e7000 1546       3       java.awt.Component$1::getAccessControlContext (5 bytes)
+Event: 14.113 Thread 0x00000000061e7000 nmethod 1546 0x00000000086ab510 code [0x00000000086ab6a0, 0x00000000086ab9c8]
+Event: 14.115 Thread 0x00000000061e6800 nmethod 1545 0x00000000086acad0 code [0x00000000086acc60, 0x00000000086acfc8]
+Event: 14.121 Thread 0x00000000061e2800 1547       4       sun.java2d.SunGraphics2D::translate (68 bytes)
+Event: 14.124 Thread 0x00000000061e2800 nmethod 1547 0x00000000086ac710 code [0x00000000086ac860, 0x00000000086ac9a8]
+Event: 17.386 Thread 0x00000000061e6800 1548       4       java.awt.Container::getMouseEventTarget (50 bytes)
+Event: 17.387 Thread 0x00000000061e6800 nmethod 1548 0x00000000086ac410 code [0x00000000086ac560, 0x00000000086ac628]
+Event: 17.584 Thread 0x00000000061e2800 1549 %     4       java.util.IdentityHashMap::clear @ 17 (39 bytes)
+Event: 17.587 Thread 0x00000000061e7000 1550       3       java.util.IdentityHashMap::keySet (26 bytes)
+Event: 17.588 Thread 0x00000000061e7000 nmethod 1550 0x00000000086abc50 code [0x00000000086abde0, 0x00000000086ac1d0]
+Event: 17.588 Thread 0x00000000061e2800 nmethod 1549% 0x00000000086ae410 code [0x00000000086ae560, 0x00000000086ae798]
+Event: 17.588 Thread 0x00000000061e7000 1551       3       java.util.IdentityHashMap$KeySet::iterator (13 bytes)
+Event: 17.588 Thread 0x00000000061e7000 nmethod 1551 0x00000000086add90 code [0x00000000086adf20, 0x00000000086ae288]
+Event: 17.594 Thread 0x00000000061e7000 1552       3       java.awt.Component::getLocationOnScreen_NoTreeLock (104 bytes)
+Event: 17.595 Thread 0x00000000061e7000 nmethod 1552 0x00000000086b0550 code [0x00000000086b0780, 0x00000000086b1348]
+Event: 17.595 Thread 0x00000000061e7000 1553       1       sun.awt.windows.WToolkit::needUpdateWindow (2 bytes)
+Event: 17.596 Thread 0x00000000061e7000 nmethod 1553 0x00000000086adad0 code [0x00000000086adc20, 0x00000000086add30]
+Event: 17.603 Thread 0x00000000061e7000 1554       3       javax.swing.JComponent::setVisible (56 bytes)
+Event: 17.604 Thread 0x00000000061e7000 nmethod 1554 0x00000000086af050 code [0x00000000086af260, 0x00000000086b0028]
+Event: 17.626 Thread 0x00000000061e7000 1556       3       javax.swing.plaf.metal.MetalScrollBarUI::setThumbBounds (157 bytes)
+Event: 17.627 Thread 0x00000000061e7000 nmethod 1556 0x00000000086b1710 code [0x00000000086b1900, 0x00000000086b2328]
+Event: 17.631 Thread 0x00000000061e7000 1557       3       java.util.LinkedList::checkPositionIndex (22 bytes)
+Event: 17.632 Thread 0x00000000061e7000 nmethod 1557 0x00000000086b2850 code [0x00000000086b2a80, 0x00000000086b3678]
+Event: 17.632 Thread 0x00000000061e7000 1558       3       java.util.LinkedList::isPositionIndex (18 bytes)
+Event: 17.632 Thread 0x00000000061e7000 nmethod 1558 0x00000000086ad710 code [0x00000000086ad860, 0x00000000086ada50]
+Event: 17.643 Thread 0x00000000061e7000 1559       3       java.util.LinkedList::listIterator (15 bytes)
+Event: 17.643 Thread 0x00000000061e7000 nmethod 1559 0x00000000086b3cd0 code [0x00000000086b3e80, 0x00000000086b4348]
+Event: 17.643 Thread 0x00000000061e7000 1560       3       java.util.LinkedList$ListItr::<init> (47 bytes)
+Event: 17.644 Thread 0x00000000061e7000 nmethod 1560 0x00000000086ad1d0 code [0x00000000086ad340, 0x00000000086ad608]
+Event: 17.647 Thread 0x00000000061e7000 1561       3       javax.swing.UIManager::get (8 bytes)
+Event: 17.648 Thread 0x00000000061e7000 nmethod 1561 0x00000000086b4590 code [0x00000000086b4720, 0x00000000086b4968]
+Event: 17.660 Thread 0x00000000061e7000 1562       3       java.awt.Component::setBounds (21 bytes)
+Event: 17.660 Thread 0x00000000061e7000 nmethod 1562 0x00000000086b4ad0 code [0x00000000086b4c40, 0x00000000086b4e88]
+Event: 17.668 Thread 0x00000000061e6800 1563       4       java.util.IdentityHashMap::clear (39 bytes)
+Event: 17.670 Thread 0x00000000061e6800 nmethod 1563 0x00000000086ae8d0 code [0x00000000086aea00, 0x00000000086aeb58]
+Event: 17.674 Thread 0x00000000061e7000 1564       1       javax.swing.plaf.basic.BasicScrollBarUI::getSupportsAbsolutePositioning (5 bytes)
+Event: 17.674 Thread 0x00000000061e7000 nmethod 1564 0x00000000086b79d0 code [0x00000000086b7b20, 0x00000000086b7c30]
+Event: 17.682 Thread 0x00000000061e7000 1565       1       javax.swing.plaf.basic.BasicScrollBarUI::isThumbRollover (5 bytes)
+Event: 17.682 Thread 0x00000000061e7000 nmethod 1565 0x00000000086b7710 code [0x00000000086b7860, 0x00000000086b7970]
+Event: 17.683 Thread 0x00000000061e7000 1566       1       sun.swing.ImageCache$Entry::getImage (5 bytes)
+Event: 17.683 Thread 0x00000000061e7000 nmethod 1566 0x00000000086b7450 code [0x00000000086b75a0, 0x00000000086b76b0]
+Event: 17.695 Thread 0x00000000061e7000 1567       3       javax.swing.plaf.metal.MetalUtils::isLeftToRight (8 bytes)
+Event: 17.695 Thread 0x00000000061e2800 1568       4       java.lang.ref.SoftReference::get (29 bytes)
+Event: 17.695 Thread 0x00000000061e7000 nmethod 1567 0x00000000086b6ed0 code [0x00000000086b7040, 0x00000000086b7350]
+Event: 17.695 Thread 0x00000000061e7000 1569   !   3       sun.java2d.SunGraphics2D::copyImage (107 bytes)
+Event: 17.696 Thread 0x00000000061e2800 nmethod 1568 0x0000000008696ed0 code [0x0000000008697000, 0x00000000086970b8]
+Event: 17.696 Thread 0x00000000061e7000 nmethod 1569 0x00000000086b7dd0 code [0x00000000086b7fc0, 0x00000000086b8ca8]
+Event: 17.696 Thread 0x00000000061e7000 1570       3       sun.java2d.pipe.DrawImage::copyImage (91 bytes)
+Event: 17.697 Thread 0x00000000061e7000 nmethod 1570 0x00000000086b6090 code [0x00000000086b6260, 0x00000000086b6b28]
+Event: 17.698 Thread 0x00000000061e6800 1571       4       java.awt.geom.Path2D$Float::append (229 bytes)
+Event: 17.702 Thread 0x00000000061e7000 1572       1       java.awt.Image$1::getSurfaceManager (5 bytes)
+Event: 17.703 Thread 0x00000000061e7000 nmethod 1572 0x00000000086b5d90 code [0x00000000086b5ee0, 0x00000000086b5ff0]
+Event: 17.703 Thread 0x00000000061e7000 1573       3       sun.java2d.SunGraphics2D::drawImage (23 bytes)
+Event: 17.704 Thread 0x00000000061e7000 nmethod 1573 0x00000000086b58d0 code [0x00000000086b5a40, 0x00000000086b5cc8]
+Event: 17.704 Thread 0x00000000061e7000 1574   !   3       sun.java2d.SunGraphics2D::drawImage (305 bytes)
+Event: 17.705 Thread 0x00000000061e7000 nmethod 1574 0x00000000086b9450 code [0x00000000086b96c0, 0x00000000086baec8]
+Event: 17.714 Thread 0x00000000061e7000 1575       3       javax.swing.RepaintManager$PaintManager::paint (189 bytes)
+Event: 17.714 Thread 0x00000000061e2800 1577       4       sun.java2d.SunGraphics2D::dispose (12 bytes)
+Event: 17.715 Thread 0x00000000061e2800 nmethod 1577 0x00000000086b5690 code [0x00000000086b57c0, 0x00000000086b5858]
+Event: 17.716 Thread 0x00000000061e7000 nmethod 1575 0x00000000086be7d0 code [0x00000000086beb00, 0x00000000086c0408]
+Event: 17.716 Thread 0x00000000061e7000 1576   !   3       javax.swing.JComponent::paintToOffscreen (108 bytes)
+Event: 17.717 Thread 0x00000000061e6800 nmethod 1571 0x00000000086c3bd0 code [0x00000000086c3d80, 0x00000000086c4f78]
+Event: 17.717 Thread 0x00000000061e7000 nmethod 1576 0x00000000086c2ad0 code [0x00000000086c2ce0, 0x00000000086c37c8]
+Event: 17.719 Thread 0x00000000061e2800 1578       4       sun.font.CompositeStrike::getStrikeForSlot (53 bytes)
+Event: 17.721 Thread 0x00000000061e2800 nmethod 1578 0x00000000086bc5d0 code [0x00000000086bc740, 0x00000000086bca78]
+Event: 17.755 Thread 0x00000000061e7000 1579   !   3       javax.swing.JComponent::recycleRectangle (27 bytes)
+Event: 17.755 Thread 0x00000000061e7000 nmethod 1579 0x00000000086b4f50 code [0x00000000086b50c0, 0x00000000086b54a8]
+Event: 17.890 Thread 0x00000000061e6800 1580       4       sun.java2d.SunGraphics2D::setRenderingHint (555 bytes)
+Event: 17.898 Thread 0x00000000061e6800 nmethod 1580 0x00000000086bda50 code [0x00000000086bdbe0, 0x00000000086be2a8]
+Event: 17.934 Thread 0x00000000061e2800 1581       4       java.awt.Rectangle::setBounds (21 bytes)
+Event: 17.935 Thread 0x00000000061e2800 nmethod 1581 0x00000000086c12d0 code [0x00000000086c1400, 0x00000000086c14b8]
+Event: 17.935 Thread 0x00000000061e7000 1582       3       java.lang.Boolean::equals (29 bytes)
+Event: 17.935 Thread 0x00000000061e7000 nmethod 1582 0x00000000086bbf10 code [0x00000000086bc080, 0x00000000086bc4f0]
+Event: 17.951 Thread 0x00000000061e6800 1583       4       java.awt.Rectangle::translate (197 bytes)
+Event: 17.953 Thread 0x00000000061e6800 nmethod 1583 0x00000000086bbb50 code [0x00000000086bbca0, 0x00000000086bbdb8]
+Event: 17.956 Thread 0x00000000061e2800 1584       4       java.awt.Component::getFont_NoClientCode (29 bytes)
+Event: 17.957 Thread 0x00000000061e2800 nmethod 1584 0x00000000086c5fd0 code [0x00000000086c6120, 0x00000000086c61e8]
+Event: 17.963 Thread 0x00000000061e7000 1585       3       javax.swing.JViewport::canUseWindowBlitter (325 bytes)
+Event: 17.966 Thread 0x00000000061e7000 nmethod 1585 0x00000000086c7a50 code [0x00000000086c7e40, 0x00000000086cab18]
+Event: 17.966 Thread 0x00000000061e7000 1586       3       javax.swing.SwingUtilities::getRoot (36 bytes)
+Event: 17.967 Thread 0x00000000061e7000 nmethod 1586 0x00000000086bd290 code [0x00000000086bd420, 0x00000000086bd948]
+Event: 17.990 Thread 0x00000000061e7000 1587       3       sun.java2d.windows.GDIWindowSurfaceData::getBounds (20 bytes)
+Event: 17.991 Thread 0x00000000061e7000 nmethod 1587 0x00000000086c2150 code [0x00000000086c22e0, 0x00000000086c28a8]
+Event: 17.991 Thread 0x00000000061e7000 1589   !   3       javax.swing.RepaintManager::getDoubleBufferMaximumSize (110 bytes)
+Event: 17.992 Thread 0x00000000061e7000 nmethod 1589 0x00000000086cbf50 code [0x00000000086cc1a0, 0x00000000086cd008]
+Event: 17.992 Thread 0x00000000061e7000 1590       3       sun.java2d.SunGraphics2D::drawImage (11 bytes)
+Event: 17.992 Thread 0x00000000061e7000 nmethod 1590 0x00000000086bcd90 code [0x00000000086bcf00, 0x00000000086bd148]
+Event: 17.992 Thread 0x00000000061e7000 1591   !   3       sun.java2d.SunGraphics2D::drawImage (145 bytes)
+Event: 17.993 Thread 0x00000000061e7000 nmethod 1591 0x00000000086cd9d0 code [0x00000000086cdc40, 0x00000000086cf158]
+Event: 17.993 Thread 0x00000000061e7000 1592       3       sun.java2d.pipe.ValidatePipe::copyImage (29 bytes)
+Event: 17.993 Thread 0x00000000061e7000 nmethod 1592 0x00000000086c15d0 code [0x00000000086c1780, 0x00000000086c1dc8]
+Event: 17.993 Thread 0x00000000061e7000 1593       3       sun.java2d.windows.GDIWindowSurfaceData::validatePipe (282 bytes)
+Event: 17.994 Thread 0x00000000061e7000 nmethod 1593 0x00000000086c6c50 code [0x00000000086c6e40, 0x00000000086c7878]
+Event: 17.994 Thread 0x00000000061e7000 1594       3       sun.java2d.windows.GDIWindowSurfaceData::getRenderLoops (31 bytes)
+Event: 17.994 Thread 0x00000000061e7000 nmethod 1594 0x00000000086c67d0 code [0x00000000086c6940, 0x00000000086c6b68]
+Event: 17.994 Thread 0x00000000061e7000 1588       3       sun.awt.windows.WComponentPeer::getBounds (11 bytes)
+Event: 17.995 Thread 0x00000000061e7000 nmethod 1588 0x00000000086cfb10 code [0x00000000086cfca0, 0x00000000086d02b0]
+Event: 17.995 Thread 0x00000000061e7000 1595       3       sun.java2d.pipe.DrawImage::copyImage (60 bytes)
+Event: 17.995 Thread 0x00000000061e7000 nmethod 1595 0x00000000086d0590 code [0x00000000086d0760, 0x00000000086d0f88]
+Event: 18.038 Thread 0x00000000061e7000 1596       3       java.awt.Rectangle::contains (152 bytes)
+Event: 18.038 Thread 0x00000000061e7000 nmethod 1596 0x00000000086d1290 code [0x00000000086d1400, 0x00000000086d18d0]
+Event: 18.038 Thread 0x00000000061e7000 1597       3       javax.swing.JViewport::flushViewDirtyRegion (125 bytes)
+Event: 18.039 Thread 0x00000000061e7000 nmethod 1597 0x00000000086d1950 code [0x00000000086d1b80, 0x00000000086d2aa8]
+Event: 18.039 Thread 0x00000000061e7000 1599       3       javax.swing.JViewport::needsRepaintAfterBlit (59 bytes)
+Event: 18.040 Thread 0x00000000061e7000 nmethod 1599 0x00000000086d2f90 code [0x00000000086d3160, 0x00000000086d3b68]
+Event: 18.040 Thread 0x00000000061e7000 1601       3       javax.swing.JViewport::fireStateChanged (68 bytes)
+Event: 18.040 Thread 0x00000000061e7000 nmethod 1601 0x00000000086d3d90 code [0x00000000086d3f60, 0x00000000086d4738]
+Event: 18.040 Thread 0x00000000061e7000 1598       3       javax.swing.JViewport::windowBlitPaint (286 bytes)
+Event: 18.044 Thread 0x00000000061e7000 nmethod 1598 0x00000000086d4b10 code [0x00000000086d5000, 0x00000000086d8878]
+Event: 18.044 Thread 0x00000000061e7000 1600       3       javax.swing.RepaintManager::notifyRepaintPerformed (51 bytes)
+Event: 18.044 Thread 0x00000000061e7000 nmethod 1600 0x00000000086db5d0 code [0x00000000086db780, 0x00000000086dbdf8]
+Event: 18.106 Thread 0x00000000061e7000 1602       3       javax.swing.JComponent::processMouseMotionEvent (46 bytes)
+Event: 18.106 Thread 0x00000000061e2800 1604       4       java.awt.Component::getGraphics (124 bytes)
+Event: 18.107 Thread 0x00000000061e7000 nmethod 1602 0x00000000086dc090 code [0x00000000086dc260, 0x00000000086dc9b8]
+Event: 18.107 Thread 0x00000000061e7000 1603       3       java.awt.Component::processMouseMotionEvent (58 bytes)
+Event: 18.107 Thread 0x00000000061e7000 nmethod 1603 0x00000000086dcdd0 code [0x00000000086dcf60, 0x00000000086dd378]
+Event: 18.151 Thread 0x00000000061e2800 nmethod 1604 0x00000000086dfdd0 code [0x00000000086e0060, 0x00000000086e2170]
+Event: 18.158 Thread 0x00000000061e7000 1605       3       javax.swing.plaf.basic.BasicScrollBarUI::access$202 (7 bytes)
+Event: 18.158 Thread 0x00000000061e7000 nmethod 1605 0x00000000086c5c90 code [0x00000000086c5de0, 0x00000000086c5f10]
+Event: 18.166 Thread 0x00000000061e7000 1606       1       javax.swing.plaf.basic.BasicScrollBarUI::access$200 (5 bytes)
+Event: 18.166 Thread 0x00000000061e7000 nmethod 1606 0x00000000086c6510 code [0x00000000086c6660, 0x00000000086c6750]
+Event: 18.714 Thread 0x00000000061e7000 1607       3       javax.swing.plaf.basic.BasicScrollBarUI::setThumbRollover (25 bytes)
+Event: 18.714 Thread 0x00000000061e7000 nmethod 1607 0x00000000086df490 code [0x00000000086df620, 0x00000000086dfb28]
+Event: 18.746 Thread 0x00000000061e7000 1608       3       java.awt.event.MouseEvent::setOldModifiers (273 bytes)
+Event: 18.746 Thread 0x00000000061e7000 nmethod 1608 0x00000000086dedd0 code [0x00000000086def40, 0x00000000086df410]
+Event: 18.778 Thread 0x00000000061e7000 1609   !   3       java.awt.Container::getMouseEventTargetImpl (255 bytes)
+Event: 18.779 Thread 0x00000000061e7000 nmethod 1609 0x00000000086e43d0 code [0x00000000086e4640, 0x00000000086e5b88]
+Event: 18.779 Thread 0x00000000061e7000 1610       3       java.awt.geom.AffineTransform::translate (547 bytes)
+Event: 18.780 Thread 0x00000000061e7000 nmethod 1610 0x00000000086dded0 code [0x00000000086de080, 0x00000000086dec68]
+Event: 18.799 Thread 0x00000000061e7000 1611       3       sun.java2d.pipe.DrawImage::copyImage (74 bytes)
+Event: 18.799 Thread 0x00000000061e7000 nmethod 1611 0x00000000086dd750 code [0x00000000086dd8e0, 0x00000000086ddd38]
+Event: 18.802 Thread 0x00000000061e6800 1612       4       java.awt.geom.AffineTransform::<init> (69 bytes)
+Event: 18.803 Thread 0x00000000061e6800 nmethod 1612 0x00000000086e90d0 code [0x00000000086e9200, 0x00000000086e92d8]
+Event: 18.807 Thread 0x00000000061e2800 1613   !   4       sun.awt.PostEventQueue::flush (168 bytes)
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (10 events):
+Event: 1.857 Thread 0x0000000022bae800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000008383ac8 method=sun.awt.image.PNGImageDecoder.produceImage()V @ 867
+Event: 2.397 Thread 0x0000000023071800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000826c000 method=java.lang.CharacterData.of(I)Ljava/lang/CharacterData; @ 4
+Event: 2.739 Thread 0x0000000023071800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000082bb708 method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 2.739 Thread 0x0000000023071800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000082bb708 method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 2.999 Thread 0x0000000023071800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000082bb708 method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 2.999 Thread 0x0000000023071800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000082bb708 method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 14.124 Thread 0x0000000023071800 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x0000000008685344 method=javax.swing.JComponent.paintChildren(Ljava/awt/Graphics;)V @ 501
+Event: 17.584 Thread 0x0000000023071800 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x0000000008685344 method=javax.swing.JComponent.paintChildren(Ljava/awt/Graphics;)V @ 501
+Event: 18.106 Thread 0x0000000023071800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000086acd4c method=java.awt.geom.AffineTransform.translate(DD)V @ 533
+Event: 18.298 Thread 0x0000000023071800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000008637298 method=java.awt.Container.getMouseEventTargetImpl(IIZLjava/awt/Container$EventTargetFilter;ZZ)Ljava/awt/Component; @ 218
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (15 events):
+Event: 0.101 Thread 0x0000000007f9e000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x0000000757107cc8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.
+Event: 0.101 Thread 0x0000000007f9e000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x0000000757107fb0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 4014]
+Event: 1.162 Thread 0x0000000007f9e000 Exception <a 'java/security/PrivilegedActionException'> (0x00000007579a6d08) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 1.162 Thread 0x0000000007f9e000 Exception <a 'java/security/PrivilegedActionException'> (0x00000007579a6f18) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 1.164 Thread 0x0000000007f9e000 Exception <a 'java/security/PrivilegedActionException'> (0x00000007579aac10) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 1.164 Thread 0x0000000007f9e000 Exception <a 'java/security/PrivilegedActionException'> (0x00000007579aae20) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 1.164 Thread 0x0000000007f9e000 Exception <a 'java/security/PrivilegedActionException'> (0x00000007579ac3a8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 1.164 Thread 0x0000000007f9e000 Exception <a 'java/security/PrivilegedActionException'> (0x00000007579ac5b8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 1.180 Thread 0x0000000007f9e000 Exception <a 'java/io/FileNotFoundException'> (0x00000007579bc328) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 1.250 Thread 0x0000000007f9e000 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x0000000757afc788) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\methodHandles.cpp, line 1167]
+Event: 1.266 Thread 0x0000000007f9e000 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x0000000757b0a688) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\methodHandles.cpp, line 1167]
+Event: 1.338 Thread 0x0000000007f9e000 Exception <a 'java/lang/ClassNotFoundException': sun/dc/DuctusRenderingEngine> (0x0000000757c5f668) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 210]
+Event: 1.368 Thread 0x0000000007f9e000 Exception <a 'java/io/FileNotFoundException'> (0x0000000757c95e48) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 2.042 Thread 0x0000000007f9e000 Exception <a 'java/io/FileNotFoundException'> (0x0000000758ab55f0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 2.042 Thread 0x0000000007f9e000 Exception <a 'java/lang/NullPointerException'> (0x0000000758ab5c98) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\linkResolver.cpp, line 1185]
+
+Events (250 events):
+Event: 4.258 loading class javax/swing/plaf/basic/BasicComboPopup done
+Event: 4.258 loading class javax/swing/plaf/basic/BasicComboPopup$EmptyListModelClass
+Event: 4.259 loading class javax/swing/plaf/basic/BasicComboPopup$EmptyListModelClass done
+Event: 4.259 loading class javax/swing/border/LineBorder
+Event: 4.259 loading class javax/swing/border/LineBorder done
+Event: 4.259 loading class javax/swing/DefaultSingleSelectionModel
+Event: 4.259 loading class javax/swing/SingleSelectionModel
+Event: 4.259 loading class javax/swing/SingleSelectionModel done
+Event: 4.259 loading class javax/swing/DefaultSingleSelectionModel done
+Event: 4.260 loading class javax/swing/plaf/basic/BasicPopupMenuUI
+Event: 4.260 loading class javax/swing/plaf/PopupMenuUI
+Event: 4.260 loading class javax/swing/plaf/PopupMenuUI done
+Event: 4.260 loading class javax/swing/plaf/basic/BasicPopupMenuUI done
+Event: 4.261 loading class javax/swing/plaf/basic/BasicLookAndFeel$AWTEventHelper
+Event: 4.261 loading class javax/swing/plaf/basic/BasicLookAndFeel$AWTEventHelper done
+Event: 4.261 loading class javax/swing/plaf/basic/BasicLookAndFeel$1
+Event: 4.261 loading class javax/swing/plaf/basic/BasicLookAndFeel$1 done
+Event: 4.261 loading class javax/swing/plaf/basic/DefaultMenuLayout
+Event: 4.261 loading class javax/swing/BoxLayout
+Event: 4.264 loading class javax/swing/BoxLayout done
+Event: 4.264 loading class javax/swing/plaf/basic/DefaultMenuLayout done
+Event: 4.264 loading class javax/swing/plaf/metal/MetalBorders$PopupMenuBorder
+Event: 4.264 loading class javax/swing/plaf/metal/MetalBorders$PopupMenuBorder done
+Event: 4.265 loading class javax/swing/plaf/basic/BasicPopupMenuUI$BasicPopupMenuListener
+Event: 4.265 loading class javax/swing/event/PopupMenuListener
+Event: 4.265 loading class javax/swing/event/PopupMenuListener done
+Event: 4.265 loading class javax/swing/plaf/basic/BasicPopupMenuUI$BasicPopupMenuListener done
+Event: 4.265 loading class javax/swing/plaf/basic/BasicPopupMenuUI$BasicMenuKeyListener
+Event: 4.265 loading class javax/swing/event/MenuKeyListener
+Event: 4.265 loading class javax/swing/event/MenuKeyListener done
+Event: 4.265 loading class javax/swing/plaf/basic/BasicPopupMenuUI$BasicMenuKeyListener done
+Event: 4.265 loading class javax/swing/plaf/basic/BasicPopupMenuUI$MouseGrabber
+Event: 4.265 loading class javax/swing/plaf/basic/BasicPopupMenuUI$MouseGrabber done
+Event: 4.265 loading class javax/swing/MenuSelectionManager
+Event: 4.266 loading class javax/swing/MenuSelectionManager done
+Event: 4.266 loading class javax/swing/plaf/basic/BasicPopupMenuUI$MenuKeyboardHelper
+Event: 4.266 loading class javax/swing/plaf/basic/BasicPopupMenuUI$MenuKeyboardHelper done
+Event: 4.266 loading class javax/swing/plaf/basic/BasicPopupMenuUI$MenuKeyboardHelper$1
+Event: 4.266 loading class java/awt/event/FocusAdapter
+Event: 4.266 loading class java/awt/event/FocusAdapter done
+Event: 4.266 loading class javax/swing/plaf/basic/BasicPopupMenuUI$MenuKeyboardHelper$1 done
+Event: 4.266 loading class javax/swing/plaf/basic/BasicComboPopup$1
+Event: 4.266 loading class javax/swing/plaf/basic/BasicComboPopup$1 done
+Event: 4.267 loading class javax/swing/ToolTipManager
+Event: 4.268 loading class javax/swing/ToolTipManager done
+Event: 4.268 loading class javax/swing/ToolTipManager$insideTimerAction
+Event: 4.268 loading class javax/swing/ToolTipManager$insideTimerAction done
+Event: 4.268 loading class javax/swing/ToolTipManager$outsideTimerAction
+Event: 4.268 loading class javax/swing/ToolTipManager$outsideTimerAction done
+Event: 4.269 loading class javax/swing/ToolTipManager$stillInsideTimerAction
+Event: 4.269 loading class javax/swing/ToolTipManager$stillInsideTimerAction done
+Event: 4.269 loading class javax/swing/ToolTipManager$MoveBeforeEnterListener
+Event: 4.269 loading class java/awt/event/MouseMotionAdapter
+Event: 4.269 loading class java/awt/event/MouseMotionAdapter done
+Event: 4.269 loading class javax/swing/ToolTipManager$MoveBeforeEnterListener done
+Event: 4.269 loading class javax/swing/ToolTipManager$AccessibilityKeyListener
+Event: 4.269 loading class java/awt/event/KeyAdapter
+Event: 4.269 loading class java/awt/event/KeyAdapter done
+Event: 4.269 loading class javax/swing/ToolTipManager$AccessibilityKeyListener done
+Event: 4.269 loading class javax/swing/JMenuItem
+Event: 4.270 loading class javax/swing/JMenuItem done
+Event: 4.270 loading class javax/swing/DefaultListSelectionModel
+Event: 4.270 loading class javax/swing/ListSelectionModel
+Event: 4.270 loading class javax/swing/ListSelectionModel done
+Event: 4.270 loading class javax/swing/DefaultListSelectionModel done
+Event: 4.270 loading class javax/swing/plaf/basic/BasicListUI
+Event: 4.271 loading class javax/swing/plaf/ListUI
+Event: 4.271 loading class javax/swing/plaf/ListUI done
+Event: 4.271 loading class javax/swing/plaf/basic/BasicListUI done
+Event: 4.271 loading class javax/swing/plaf/basic/BasicListUI$ListTransferHandler
+Event: 4.271 loading class javax/swing/plaf/basic/BasicListUI$ListTransferHandler done
+Event: 4.272 loading class javax/swing/DefaultListCellRenderer$UIResource
+Event: 4.273 loading class javax/swing/DefaultListCellRenderer
+Event: 4.273 loading class javax/swing/ListCellRenderer
+Event: 4.273 loading class javax/swing/ListCellRenderer done
+Event: 4.273 loading class javax/swing/DefaultListCellRenderer done
+Event: 4.273 loading class javax/swing/DefaultListCellRenderer$UIResource done
+Event: 4.273 loading class javax/swing/plaf/basic/BasicListUI$Handler
+Event: 4.274 loading class javax/swing/event/ListSelectionListener
+Event: 4.274 loading class javax/swing/event/ListSelectionListener done
+Event: 4.274 loading class javax/swing/plaf/basic/BasicListUI$Handler done
+Event: 4.289 loading class javax/swing/JMenu
+Event: 4.289 loading class javax/swing/JMenu done
+Event: 4.290 loading class javax/swing/event/ListSelectionEvent
+Event: 4.290 loading class javax/swing/event/ListSelectionEvent done
+Event: 4.290 loading class javax/swing/plaf/basic/BasicComboPopup$Handler
+Event: 4.290 loading class javax/swing/plaf/basic/BasicComboPopup$Handler done
+Event: 4.291 loading class javax/swing/ScrollPaneLayout$UIResource
+Event: 4.291 loading class javax/swing/ScrollPaneLayout
+Event: 4.291 loading class javax/swing/ScrollPaneLayout done
+Event: 4.291 loading class javax/swing/ScrollPaneLayout$UIResource done
+Event: 4.292 loading class javax/swing/ViewportLayout
+Event: 4.292 loading class javax/swing/ViewportLayout done
+Event: 4.292 loading class javax/swing/plaf/basic/BasicViewportUI
+Event: 4.292 loading class javax/swing/plaf/ViewportUI
+Event: 4.292 loading class javax/swing/plaf/ViewportUI done
+Event: 4.292 loading class javax/swing/plaf/basic/BasicViewportUI done
+Event: 4.292 loading class javax/swing/JScrollPane$ScrollBar
+Event: 4.292 loading class javax/swing/JScrollBar
+Event: 4.293 loading class java/awt/Adjustable
+Event: 4.293 loading class java/awt/Adjustable done
+Event: 4.293 loading class javax/swing/JScrollBar done
+Event: 4.293 loading class javax/swing/JScrollPane$ScrollBar done
+Event: 4.293 loading class javax/swing/JScrollBar$ModelListener
+Event: 4.293 loading class javax/swing/JScrollBar$ModelListener done
+Event: 4.293 loading class javax/swing/plaf/metal/MetalScrollBarUI
+Event: 4.294 loading class javax/swing/plaf/basic/BasicScrollBarUI
+Event: 4.294 loading class javax/swing/plaf/ScrollBarUI
+Event: 4.294 loading class javax/swing/plaf/ScrollBarUI done
+Event: 4.294 loading class javax/swing/plaf/basic/BasicScrollBarUI done
+Event: 4.294 loading class javax/swing/plaf/metal/MetalScrollBarUI done
+Event: 4.295 loading class javax/swing/plaf/metal/MetalBumps
+Event: 4.295 loading class javax/swing/plaf/metal/MetalBumps done
+Event: 4.295 loading class javax/swing/plaf/metal/MetalScrollButton
+Event: 4.295 loading class javax/swing/plaf/basic/BasicArrowButton
+Event: 4.295 loading class javax/swing/plaf/basic/BasicArrowButton done
+Event: 4.295 loading class javax/swing/plaf/metal/MetalScrollButton done
+Event: 4.296 loading class javax/swing/plaf/basic/BasicScrollBarUI$TrackListener
+Event: 4.296 loading class javax/swing/plaf/basic/BasicScrollBarUI$TrackListener done
+Event: 4.296 loading class javax/swing/plaf/basic/BasicScrollBarUI$ArrowButtonListener
+Event: 4.296 loading class javax/swing/plaf/basic/BasicScrollBarUI$ArrowButtonListener done
+Event: 4.296 loading class javax/swing/plaf/basic/BasicScrollBarUI$ModelListener
+Event: 4.296 loading class javax/swing/plaf/basic/BasicScrollBarUI$ModelListener done
+Event: 4.296 loading class javax/swing/plaf/metal/MetalScrollBarUI$ScrollBarListener
+Event: 4.296 loading class javax/swing/plaf/basic/BasicScrollBarUI$PropertyChangeHandler
+Event: 4.296 loading class javax/swing/plaf/basic/BasicScrollBarUI$PropertyChangeHandler done
+Event: 4.296 loading class javax/swing/plaf/metal/MetalScrollBarUI$ScrollBarListener done
+Event: 4.296 loading class javax/swing/plaf/basic/BasicScrollBarUI$Handler
+Event: 4.297 loading class javax/swing/plaf/basic/BasicScrollBarUI$Handler done
+Event: 4.297 loading class javax/swing/plaf/basic/BasicScrollBarUI$ScrollListener
+Event: 4.297 loading class javax/swing/plaf/basic/BasicScrollBarUI$ScrollListener done
+Event: 4.299 loading class javax/swing/JViewport$ViewListener
+Event: 4.299 loading class java/awt/event/ComponentAdapter
+Event: 4.299 loading class java/awt/event/ComponentAdapter done
+Event: 4.299 loading class javax/swing/JViewport$ViewListener done
+Event: 4.299 loading class javax/swing/plaf/metal/MetalScrollPaneUI
+Event: 4.299 loading class javax/swing/plaf/basic/BasicScrollPaneUI
+Event: 4.300 loading class javax/swing/plaf/ScrollPaneUI
+Event: 4.300 loading class javax/swing/plaf/ScrollPaneUI done
+Event: 4.300 loading class javax/swing/plaf/basic/BasicScrollPaneUI done
+Event: 4.300 loading class javax/swing/plaf/metal/MetalScrollPaneUI done
+Event: 4.300 loading class javax/swing/plaf/metal/MetalBorders$ScrollPaneBorder
+Event: 4.300 loading class javax/swing/plaf/metal/MetalBorders$ScrollPaneBorder done
+Event: 4.301 loading class javax/swing/plaf/basic/BasicScrollPaneUI$Handler
+Event: 4.302 loading class javax/swing/plaf/basic/BasicScrollPaneUI$Handler done
+Event: 4.302 loading class javax/swing/plaf/metal/MetalScrollPaneUI$1
+Event: 4.302 loading class javax/swing/plaf/metal/MetalScrollPaneUI$1 done
+Event: 4.303 loading class javax/swing/plaf/basic/BasicComboBoxRenderer$UIResource
+Event: 4.303 loading class javax/swing/plaf/basic/BasicComboBoxRenderer
+Event: 4.304 loading class javax/swing/plaf/basic/BasicComboBoxRenderer done
+Event: 4.304 loading class javax/swing/plaf/basic/BasicComboBoxRenderer$UIResource done
+Event: 4.305 loading class javax/swing/plaf/metal/MetalComboBoxEditor$UIResource
+Event: 4.305 loading class javax/swing/plaf/metal/MetalComboBoxEditor
+Event: 4.305 loading class javax/swing/plaf/basic/BasicComboBoxEditor
+Event: 4.305 loading class javax/swing/ComboBoxEditor
+Event: 4.305 loading class javax/swing/ComboBoxEditor done
+Event: 4.305 loading class javax/swing/plaf/basic/BasicComboBoxEditor done
+Event: 4.305 loading class javax/swing/plaf/metal/MetalComboBoxEditor done
+Event: 4.305 loading class javax/swing/plaf/metal/MetalComboBoxEditor$UIResource done
+Event: 4.305 loading class javax/swing/plaf/basic/BasicComboBoxEditor$BorderlessTextField
+Event: 4.305 loading class javax/swing/plaf/basic/BasicComboBoxEditor$BorderlessTextField done
+Event: 4.305 loading class javax/swing/plaf/basic/BasicComboBoxEditor$UIResource
+Event: 4.305 loading class javax/swing/plaf/basic/BasicComboBoxEditor$UIResource done
+Event: 4.306 loading class javax/swing/plaf/metal/MetalComboBoxEditor$1
+Event: 4.306 loading class javax/swing/plaf/metal/MetalComboBoxEditor$1 done
+Event: 4.307 loading class javax/swing/plaf/metal/MetalComboBoxEditor$EditorBorder
+Event: 4.307 loading class javax/swing/plaf/metal/MetalComboBoxEditor$EditorBorder done
+Event: 4.307 loading class javax/swing/plaf/metal/MetalComboBoxUI$MetalPropertyChangeListener
+Event: 4.307 loading class javax/swing/plaf/basic/BasicComboBoxUI$PropertyChangeHandler
+Event: 4.307 loading class javax/swing/plaf/basic/BasicComboBoxUI$PropertyChangeHandler done
+Event: 4.307 loading class javax/swing/plaf/metal/MetalComboBoxUI$MetalPropertyChangeListener done
+Event: 4.307 loading class javax/swing/plaf/basic/BasicComboBoxUI$Handler
+Event: 4.307 loading class javax/swing/plaf/basic/BasicComboBoxUI$Handler done
+Event: 4.307 loading class javax/swing/plaf/metal/MetalComboBoxButton
+Event: 4.308 loading class javax/swing/plaf/metal/MetalComboBoxButton done
+Event: 4.308 loading class javax/swing/plaf/metal/MetalComboBoxIcon
+Event: 4.308 loading class javax/swing/plaf/metal/MetalComboBoxIcon done
+Event: 4.308 loading class javax/swing/plaf/metal/MetalComboBoxButton$1
+Event: 4.308 loading class javax/swing/plaf/metal/MetalComboBoxButton$1 done
+Event: 4.309 loading class javax/swing/plaf/basic/BasicComboBoxUI$DefaultKeySelectionManager
+Event: 4.309 loading class javax/swing/JComboBox$KeySelectionManager
+Event: 4.309 loading class javax/swing/JComboBox$KeySelectionManager done
+Event: 4.309 loading class javax/swing/plaf/basic/BasicComboBoxUI$DefaultKeySelectionManager done
+Event: 4.310 loading class tableSearch/view/MainView$1
+Event: 4.310 loading class tableSearch/view/MainView$1 done
+Event: 4.310 Thread 0x0000000023071800 DEOPT PACKING pc=0x00000000082bc5d4 sp=0x00000000264db610
+Event: 4.310 Thread 0x0000000023071800 DEOPT UNPACKING pc=0x00000000081975d0 sp=0x00000000264db430 mode 1
+Event: 4.310 Thread 0x0000000023071800 DEOPT PACKING pc=0x00000000082bc36c sp=0x00000000264db7a0
+Event: 4.310 Thread 0x0000000023071800 DEOPT UNPACKING pc=0x00000000081975d0 sp=0x00000000264db5d8 mode 1
+Event: 4.325 loading class javax/swing/JList$3
+Event: 4.326 loading class javax/swing/JList$3 done
+Event: 4.326 loading class tableSearch/view/MainView$2
+Event: 4.326 loading class tableSearch/view/MainView$2 done
+Event: 4.326 Thread 0x0000000023071800 DEOPT PACKING pc=0x00000000082bc5d4 sp=0x00000000264db620
+Event: 4.326 Thread 0x0000000023071800 DEOPT UNPACKING pc=0x00000000081975d0 sp=0x00000000264db440 mode 1
+Event: 4.326 Thread 0x0000000023071800 DEOPT PACKING pc=0x00000000082bc36c sp=0x00000000264db7b0
+Event: 4.326 Thread 0x0000000023071800 DEOPT UNPACKING pc=0x00000000081975d0 sp=0x00000000264db5e8 mode 1
+Event: 4.384 loading class javax/swing/plaf/basic/BasicTextAreaUI
+Event: 4.384 loading class javax/swing/plaf/basic/BasicTextAreaUI done
+Event: 4.386 loading class javax/swing/text/WrappedPlainView
+Event: 4.388 loading class javax/swing/text/BoxView
+Event: 4.389 loading class javax/swing/text/CompositeView
+Event: 4.389 loading class javax/swing/text/CompositeView done
+Event: 4.389 loading class javax/swing/text/BoxView done
+Event: 4.389 loading class javax/swing/text/WrappedPlainView done
+Event: 4.390 loading class javax/swing/text/WrappedPlainView$WrappedLine
+Event: 4.390 loading class javax/swing/text/WrappedPlainView$WrappedLine done
+Event: 4.427 Thread 0x0000000023071800 DEOPT PACKING pc=0x00000000083e8307 sp=0x00000000264dbb00
+Event: 4.427 Thread 0x0000000023071800 DEOPT UNPACKING pc=0x00000000081975d0 sp=0x00000000264db838 mode 0
+Event: 4.437 loading class javax/swing/plaf/basic/BasicGraphicsUtils
+Event: 4.437 loading class javax/swing/plaf/basic/BasicGraphicsUtils done
+Event: 4.438 loading class sun/font/CMap$CMapFormat12
+Event: 4.439 loading class sun/font/CMap$CMapFormat12 done
+Event: 4.501 loading class java/awt/GridBagLayoutInfo
+Event: 4.502 loading class java/awt/GridBagLayoutInfo done
+Event: 4.503 loading class javax/swing/SizeRequirements
+Event: 4.503 loading class javax/swing/SizeRequirements done
+Event: 4.575 loading class java/awt/geom/RectIterator
+Event: 4.575 loading class java/awt/geom/PathIterator
+Event: 4.575 loading class java/awt/geom/PathIterator done
+Event: 4.575 loading class java/awt/geom/RectIterator done
+Event: 4.667 loading class javax/swing/event/AncestorEvent
+Event: 4.668 loading class javax/swing/event/AncestorEvent done
+Event: 5.103 Executing VM operation: EnableBiasedLocking
+Event: 5.103 Executing VM operation: EnableBiasedLocking done
+Event: 6.227 loading class javax/swing/DefaultListModel
+Event: 6.227 loading class javax/swing/DefaultListModel done
+Event: 6.764 loading class javax/swing/plaf/BorderUIResource$LineBorderUIResource
+Event: 6.764 loading class javax/swing/plaf/BorderUIResource$LineBorderUIResource done
+Event: 6.859 Thread 0x0000000022bae800 Thread exited: 0x0000000022bae800
+Event: 6.943 loading class javax/swing/text/AbstractDocument$ElementEdit
+Event: 6.943 loading class javax/swing/text/AbstractDocument$ElementEdit done
+Event: 7.107 Executing VM operation: BulkRevokeBias
+Event: 7.108 Executing VM operation: BulkRevokeBias done
+Event: 7.114 Executing VM operation: BulkRevokeBias
+Event: 7.114 Executing VM operation: BulkRevokeBias done
+Event: 14.124 Thread 0x0000000023071800 Uncommon trap: trap_request=0xffffff76 fr.pc=0x0000000008685344
+Event: 14.124 Thread 0x0000000023071800 DEOPT PACKING pc=0x0000000008685344 sp=0x00000000264dc850
+Event: 14.124 Thread 0x0000000023071800 DEOPT UNPACKING pc=0x000000000819557b sp=0x00000000264dc7f8 mode 2
+Event: 17.584 Thread 0x0000000023071800 Uncommon trap: trap_request=0xffffff76 fr.pc=0x0000000008685344
+Event: 17.584 Thread 0x0000000023071800 DEOPT PACKING pc=0x0000000008685344 sp=0x00000000264dc850
+Event: 17.584 Thread 0x0000000023071800 DEOPT UNPACKING pc=0x000000000819557b sp=0x00000000264dc7f8 mode 2
+Event: 17.668 Thread 0x0000000023071800 DEOPT PACKING pc=0x000000000864c5be sp=0x00000000264ddd20
+Event: 17.668 Thread 0x0000000023071800 DEOPT UNPACKING pc=0x00000000081975d0 sp=0x00000000264dda40 mode 0
+Event: 18.106 Thread 0x0000000023071800 Uncommon trap: trap_request=0xffffff65 fr.pc=0x00000000086acd4c
+Event: 18.106 Thread 0x0000000023071800 DEOPT PACKING pc=0x00000000086acd4c sp=0x00000000264dbe80
+Event: 18.106 Thread 0x0000000023071800 DEOPT UNPACKING pc=0x000000000819557b sp=0x00000000264dbe10 mode 2
+Event: 18.298 Thread 0x0000000023071800 Uncommon trap: trap_request=0xffffff65 fr.pc=0x0000000008637298
+Event: 18.298 Thread 0x0000000023071800 DEOPT PACKING pc=0x0000000008637298 sp=0x00000000264dcf70
+Event: 18.298 Thread 0x0000000023071800 DEOPT UNPACKING pc=0x000000000819557b sp=0x00000000264dcf60 mode 2
+
+
+Dynamic libraries:
+0x00007ff63c740000 - 0x00007ff63c789000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\bin\javaw.exe
+0x00007ff905f10000 - 0x00007ff9060fd000 	C:\windows\SYSTEM32\ntdll.dll
+0x00007ff903a40000 - 0x00007ff903af3000 	C:\windows\System32\KERNEL32.DLL
+0x00007ff902360000 - 0x00007ff9025f3000 	C:\windows\System32\KERNELBASE.dll
+0x00007ff905e30000 - 0x00007ff905ed3000 	C:\windows\System32\ADVAPI32.dll
+0x00007ff905970000 - 0x00007ff905a0e000 	C:\windows\System32\msvcrt.dll
+0x00007ff9038d0000 - 0x00007ff90396e000 	C:\windows\System32\sechost.dll
+0x00007ff905a70000 - 0x00007ff905b92000 	C:\windows\System32\RPCRT4.dll
+0x00007ff903620000 - 0x00007ff9037b7000 	C:\windows\System32\USER32.dll
+0x00007ff901fd0000 - 0x00007ff901ff0000 	C:\windows\System32\win32u.dll
+0x00007ff903970000 - 0x00007ff903999000 	C:\windows\System32\GDI32.dll
+0x00007ff902f90000 - 0x00007ff903129000 	C:\windows\System32\gdi32full.dll
+0x00007ff9021c0000 - 0x00007ff902260000 	C:\windows\System32\msvcp_win.dll
+0x00007ff901ff0000 - 0x00007ff9020ea000 	C:\windows\System32\ucrtbase.dll
+0x00007ff8e7130000 - 0x00007ff8e73a9000 	C:\windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17763.914_none_05b346b2072102f2\COMCTL32.dll
+0x00007ff903190000 - 0x00007ff9034bc000 	C:\windows\System32\combase.dll
+0x00007ff9020f0000 - 0x00007ff90216e000 	C:\windows\System32\bcryptPrimitives.dll
+0x00007ff9056c0000 - 0x00007ff9056ee000 	C:\windows\System32\IMM32.DLL
+0x00007ff8f7d60000 - 0x00007ff8f7df1000 	C:\windows\INCOPS3\esdcnl64.dll
+0x00007ff900da0000 - 0x00007ff900dd1000 	C:\windows\SYSTEM32\ntmarta.dll
+0x00007ff8dfd30000 - 0x00007ff8dfe2d000 	C:\windows\INCOPS3\ESATM64.dll
+0x00007ff9034c0000 - 0x00007ff903615000 	C:\windows\System32\ole32.dll
+0x00007ff9051b0000 - 0x00007ff90521d000 	C:\windows\System32\WS2_32.dll
+0x00007ff9010d0000 - 0x00007ff9010da000 	C:\windows\SYSTEM32\VERSION.dll
+0x00007ff8e4860000 - 0x00007ff8e48c2000 	C:\Program Files\Manufacturer\Endpoint Agent\prntm64.dll
+0x00007ff903870000 - 0x00007ff9038c2000 	C:\windows\System32\SHLWAPI.dll
+0x00007ff9010e0000 - 0x00007ff9010ec000 	C:\windows\SYSTEM32\Secur32.dll
+0x00007ff8fb2c0000 - 0x00007ff8fb349000 	C:\windows\SYSTEM32\WINSPOOL.DRV
+0x00007ff901fb0000 - 0x00007ff901fc1000 	C:\windows\System32\kernel.appcore.dll
+0x00007ff902190000 - 0x00007ff9021b6000 	C:\windows\System32\bcrypt.dll
+0x000000006aef0000 - 0x000000006afc2000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\bin\MSVCR100.dll
+0x000000006cd90000 - 0x000000006ce28000 	C:\windows\SYSTEM32\MSVCP100.dll
+0x00007ff8ffa60000 - 0x00007ff8ffc09000 	C:\windows\SYSTEM32\PROPSYS.dll
+0x00007ff9058a0000 - 0x00007ff905964000 	C:\windows\System32\OLEAUT32.dll
+0x0000000007da0000 - 0x0000000007e48000 	C:\windows\System32\shcore.dll
+0x00007ff901490000 - 0x00007ff9014cd000 	C:\windows\SYSTEM32\IPHLPAPI.DLL
+0x00007ff901e00000 - 0x00007ff901e2f000 	C:\windows\SYSTEM32\SSPICLI.DLL
+0x00007ff8dfca0000 - 0x00007ff8dfd29000 	C:\windows\INCOPS3\ESSCNL64.dll
+0x000000006ae10000 - 0x000000006aee2000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\msvcr100.dll
+0x0000000069740000 - 0x000000006a003000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\server\jvm.dll
+0x00007ff905d10000 - 0x00007ff905d18000 	C:\windows\System32\PSAPI.DLL
+0x00007ff8ee9d0000 - 0x00007ff8ee9d9000 	C:\windows\SYSTEM32\WSOCK32.dll
+0x00007ff8fc490000 - 0x00007ff8fc4b4000 	C:\windows\SYSTEM32\WINMM.dll
+0x00007ff8fc430000 - 0x00007ff8fc45d000 	C:\windows\SYSTEM32\WINMMBASE.dll
+0x00007ff902260000 - 0x00007ff9022aa000 	C:\windows\System32\cfgmgr32.dll
+0x00007ff8fb100000 - 0x00007ff8fb10f000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\verify.dll
+0x00007ff8e1a30000 - 0x00007ff8e1a59000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\java.dll
+0x00007ff8e2800000 - 0x00007ff8e2835000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\jdwp.dll
+0x00007ff8fc980000 - 0x00007ff8fc988000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\npt.dll
+0x00007ff8f40a0000 - 0x00007ff8f40c3000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\instrument.dll
+0x00007ff8f3db0000 - 0x00007ff8f3dc6000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\zip.dll
+0x0000000020ec0000 - 0x00000000223b4000 	C:\windows\System32\SHELL32.dll
+0x0000000006d10000 - 0x000000000745d000 	C:\windows\System32\windows.storage.dll
+0x00007ff901f60000 - 0x00007ff901f84000 	C:\windows\System32\profapi.dll
+0x00007ff901f00000 - 0x00007ff901f5d000 	C:\windows\System32\powrprof.dll
+0x00007ff902170000 - 0x00007ff902187000 	C:\windows\System32\cryptsp.dll
+0x00007ff8fbaf0000 - 0x00007ff8fbaf9000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\dt_socket.dll
+0x00007ff8e22f0000 - 0x00007ff8e2306000 	C:\windows\system32\napinsp.dll
+0x00007ff8e2310000 - 0x00007ff8e232a000 	C:\windows\system32\pnrpnsp.dll
+0x00007ff901770000 - 0x00007ff9017d7000 	C:\windows\System32\mswsock.dll
+0x00007ff9014d0000 - 0x00007ff901596000 	C:\windows\SYSTEM32\DNSAPI.dll
+0x00007ff903a20000 - 0x00007ff903a28000 	C:\windows\System32\NSI.dll
+0x00007ff8f5510000 - 0x00007ff8f551e000 	C:\windows\System32\winrnr.dll
+0x00007ff8f9340000 - 0x00007ff8f935b000 	C:\windows\system32\NLAapi.dll
+0x00007ff8fbe00000 - 0x00007ff8fbe15000 	C:\windows\system32\wshbth.dll
+0x00007ff8fd340000 - 0x00007ff8fd3b9000 	C:\windows\System32\fwpuclnt.dll
+0x00007ff8f7960000 - 0x00007ff8f796a000 	C:\Windows\System32\rasadhlp.dll
+0x00007ff8c7fc0000 - 0x00007ff8c816b000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\awt.dll
+0x00007ff8ff280000 - 0x00007ff8ff30c000 	C:\windows\SYSTEM32\apphelp.dll
+0x00007ff900400000 - 0x00007ff90042e000 	C:\windows\system32\DWMAPI.DLL
+0x00007ff902db0000 - 0x00007ff902f8b000 	C:\windows\System32\CRYPT32.dll
+0x00007ff901f90000 - 0x00007ff901fa2000 	C:\windows\System32\MSASN1.dll
+0x00007ff8ff370000 - 0x00007ff8ff40c000 	C:\windows\system32\uxtheme.dll
+0x00007ff8d8400000 - 0x00007ff8d8527000 	C:\windows\system32\opengl32.dll
+0x00007ff8f5b60000 - 0x00007ff8f5b8c000 	C:\windows\SYSTEM32\GLU32.dll
+0x00007ff905ba0000 - 0x00007ff905d0c000 	C:\windows\System32\MSCTF.dll
+0x00007ff8c4ee0000 - 0x00007ff8c4f86000 	C:\windows\Softcamp\SDS\x64\DSEDcon64.DLL
+0x0000000007ef0000 - 0x0000000007f49000 	C:\windows\System32\WINTRUST.dll
+0x00007ff8c08b0000 - 0x00007ff8c09b0000 	C:\windows\Softcamp\SDS\x64\ASCore64.dll
+0x0000000180000000 - 0x000000018016f000 	C:\windows\Softcamp\SDS\x64\DSTermPr64.dll
+0x00007ff8d46a0000 - 0x00007ff8d46ce000 	C:\windows\INCOPS3\ProcMon64.dll
+0x00007ff8ef0a0000 - 0x00007ff8ef10c000 	C:\windows\SYSTEM32\OLEACC.dll
+0x0000000023b90000 - 0x0000000023c50000 	C:\windows\WRMK64.DLL
+0x00007ff8de600000 - 0x00007ff8de64a000 	C:\windows\ExtModuleManager64.dll
+0x00007ff8e1c30000 - 0x00007ff8e1cc1000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\freetype.dll
+0x00007ff8e1d50000 - 0x00007ff8e1d9a000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\fontmanager.dll
+0x00007ff905d20000 - 0x00007ff905dc2000 	C:\windows\System32\clbcatq.dll
+0x00007ff8f9f90000 - 0x00007ff8fa148000 	C:\windows\SYSTEM32\WindowsCodecs.dll
+0x00007ff8d7470000 - 0x00007ff8d74c6000 	C:\windows\system32\dataexchange.dll
+0x00007ff8fea90000 - 0x00007ff8fed0e000 	C:\windows\system32\d3d11.dll
+0x00007ff8fe8c0000 - 0x00007ff8fea83000 	C:\windows\system32\dcomp.dll
+0x00007ff900a90000 - 0x00007ff900b52000 	C:\windows\system32\dxgi.dll
+0x00007ff9004e0000 - 0x00007ff9006ed000 	C:\windows\system32\twinapi.appcore.dll
+0x00007ff9006f0000 - 0x00007ff900718000 	C:\windows\system32\RMCLIENT.dll
+0x00007ff8f3990000 - 0x00007ff8f3a25000 	C:\windows\System32\TextInputFramework.dll
+0x00007ff8fa250000 - 0x00007ff8fa572000 	C:\windows\System32\CoreUIComponents.dll
+0x00007ff8fed10000 - 0x00007ff8fedf2000 	C:\windows\System32\CoreMessaging.dll
+0x00007ff8fd5f0000 - 0x00007ff8fd743000 	C:\windows\SYSTEM32\wintypes.dll
+0x00007ff8f0a00000 - 0x00007ff8f0a1a000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\net.dll
+0x00007ff8ea660000 - 0x00007ff8ea671000 	C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin\nio.dll
+0x00007ff8e04a0000 - 0x00007ff8e056f000 	C:\Windows\System32\IME\IMEKR\imkrtip.dll
+0x00007ff8e0360000 - 0x00007ff8e0498000 	C:\Windows\System32\IME\shared\imetip.dll
+0x00007ff8e01a0000 - 0x00007ff8e0355000 	C:\windows\SYSTEM32\DUI70.dll
+0x00007ff8e6090000 - 0x00007ff8e60ce000 	C:\Windows\System32\IME\IMEKR\imkrapi.dll
+0x00007ff8e0160000 - 0x00007ff8e019f000 	C:\Windows\System32\IME\shared\imjkapi.dll
+0x0000000023830000 - 0x0000000023848000 	C:\windows\DSCnpPolicyx64.DLL
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:50668 -javaagent:D:\eclipse\configuration\org.eclipse.osgi\411\0\.cp\lib\javaagent-shaded.jar -Dfile.encoding=US-ASCII 
+java_command: tableSearch.Execute
+java_class_path (initial): D:\workspace\tablesearch\bin;D:\eclipse\configuration\org.eclipse.osgi\411\0\.cp\lib\javaagent-shaded.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files (x86)\Java\jdk1.5.0_17
+CLASSPATH=C:\Program Files (x86)\Java\jdk1.5.0_17\bin;
+PATH=C:\Program Files\Java\jdk14\bin;D:\app\201379\product\11.2.0\client_2\bin;C:\Program Files (x86)\Java\jdk1.5.0_17\bin;C:\TmaxSoft\WebtoB4.1\bin;C:\TmaxSoft\WebtoB4.1\lib;C:\oraclexe\app\oracle\product\11.2.0\server\bin;C:\windows\Softcamp\SDK;C:\windows\Softcamp\SDS\x64;C:\windows\Softcamp\SDS;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IP;C:\Program Files (x86)\Java\jdk1.5.0_17\bin;C:\Program Files\nodejs\;D:\app\201379\product\11.2.0\client_2;C:\OracleClient\instantclient_11_2;D:\gcc\bin;C:\TmaxSoft\JEUS6.0\bin;C:\TmaxSoft\JEUS6.0\lib\system;C:\Program Files (x86)\Java\openjdk1.8.0_242\bin;C:\Program Files (x86)\Java\openjdk1.8.0_242\jre\bin;C:\Program Files\Git\cmd;C:\Program Files\TortoiseSVN\bin;C:\TmaxSoft\JEUS6.0\bin;C:\TmaxSoft\JEUS6.0\lib\system;C:\TmaxSoft\JEUS6.0\webserver\bin;D:\anaconda;D:\anaconda\Library\mingw-w64\bin;D:\anaconda\Library\usr\bin;D:\anaconda\Library\bin;D:\anaconda\Scripts;C:\Users\SSG\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\SSG\AppData\Local\Programs\Python\Python37\;C:\Users\SSG\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Bandizip\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\SSG\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\SSG\AppData\Roaming\npm;C:\Program Files (x86)\Java\jdk1.5.0_17\bin
+USERNAME=201379
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 78 Stepping 3, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 17763 (10.0.17763.475)
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 78 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 20631764k(2678800k free), swap 33840200k(1924k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.242-b08) for windows-amd64 JRE (1.8.0_242-b08), built on Jan 18 2020 10:32:32 by "VssAdministrator" with MS VC++ 10.0 (VS2010)
+
+time: Tue Nov 03 13:07:35 2020
+timezone: 대한민국 표준시
+elapsed time: 18 seconds (0d 0h 0m 18s)
+

@@ -195,6 +195,21 @@ public class MainView extends JFrame {
 		            columns.add("COM,회사,VARCHAR2, ");
 		            columns.add("ACNT,회계,VARCHAR2, ");
 		            columns.add("CYSLCD,전표,NUMBER,개인정보비대상");
+		            columns.add("COM,회사,VARCHAR2, ");
+		            columns.add("ACNT,회계,VARCHAR2, ");
+		            columns.add("CYSLCD,전표,NUMBER,개인정보비대상");
+		            columns.add("COM,회사,VARCHAR2, ");
+		            columns.add("ACNT,회계,VARCHAR2, ");
+		            columns.add("CYSLCD,전표,NUMBER,개인정보비대상");
+		            columns.add("COM,회사,VARCHAR2, ");
+		            columns.add("ACNT,회계,VARCHAR2, ");
+		            columns.add("CYSLCD,전표,NUMBER,개인정보비대상");
+		            columns.add("COM,회사,VARCHAR2, ");
+		            columns.add("ACNT,회계,VARCHAR2, ");
+		            columns.add("CYSLCD,전표,NUMBER,개인정보비대상");
+		            columns.add("COM,회사,VARCHAR2, ");
+		            columns.add("BGITCD,승인예정코드표,VARCHAR2,암호화대상");
+		            columns.add("CYSLCD,전표,NUMBER,개인정보비대상");
 		            data.put("columns", columns);
 		            setTableData(data);
 		        }
@@ -340,6 +355,8 @@ public class MainView extends JFrame {
 		th_oth.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		list.setLayout(gbl_c);
+		gbc_c.weightx = 1.0;
+		gbc_c.weighty = 1.0;
 		list.setBackground(Color.WHITE);
 		list.setOpaque(true);
 		list.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
@@ -348,37 +365,37 @@ public class MainView extends JFrame {
 		clist.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
 		// 주요정보
-		setGridConst(gbl, gbc, header,  0, 0, 5, 1,  1.0f, 0.03f);
+		setGridConst(gbl, gbc, header,  0, 0, 5, 1, 1.0f, 0.03f);
 		panel.add(header);
 		// PK_LABEL
-		setGridConst(gbl, gbc, lb_pk,   0, 1, 1, 1,  0.1f, 0.03f);
+		setGridConst(gbl, gbc, lb_pk,   0, 1, 1, 1, 0.1f, 0.03f);
 		panel.add(lb_pk);
 		// PK_TEXT
-		setGridConst(gbl, gbc, tx_pk,   1, 1, 4, 1,  0.9f, 0.03f);
+		setGridConst(gbl, gbc, tx_pk,   1, 1, 4, 1, 0.9f, 0.03f);
 		panel.add(tx_pk);
 		// TableSpace_LABEL
-		setGridConst(gbl, gbc, lb_ts,   0, 2, 1, 1,  0.1f, 0.03f);
+		setGridConst(gbl, gbc, lb_ts,   0, 2, 1, 1, 0.1f, 0.03f);
 		panel.add(lb_ts);
 		// TableSpace_TEXT
-		setGridConst(gbl, gbc, tx_ts,   1, 2, 4, 1,  0.9f, 0.03f);
+		setGridConst(gbl, gbc, tx_ts,   1, 2, 4, 1, 0.9f, 0.03f);
 		panel.add(tx_ts);
 		// 컬럼정보
-		setGridConst(gbl, gbc, column,  0, 3, 5, 1,  1.0f, 0.04f);
+		setGridConst(gbl, gbc, column,  0, 3, 5, 1, 1.0f, 0.04f);
 		panel.add(column);
 		// th_name
-		setGridConst(gbl, gbc, th_name, 0, 4, 1, 1,  0.1f, 0.03f);
+		setGridConst(gbl, gbc, th_name, 0, 4, 1, 1, 0.05f, 0.03f);
 		panel.add(th_name);
 		// th_cmt
-		setGridConst(gbl, gbc, th_cmt,  1, 4, 1, 1, 0.25f, 0.03f);
+		setGridConst(gbl, gbc, th_cmt,  1, 4, 1, 1, 0.3f, 0.03f);
 		panel.add(th_cmt);
 		// th_type
-		setGridConst(gbl, gbc, th_type, 2, 4, 1, 1, 0.25f, 0.03f);
+		setGridConst(gbl, gbc, th_type, 2, 4, 1, 1, 0.3f, 0.03f);
 		panel.add(th_type);
 		// th_oth
-		setGridConst(gbl, gbc, th_oth,  3, 4, 2, 1,  0.4f, 0.03f);
+		setGridConst(gbl, gbc, th_oth,  3, 4, 1, 1, 0.4f, 0.03f);
 		panel.add(th_oth);
 		// column list
-		setGridConst(gbl, gbc, clist,   0, 5, 5, 1,  1.0f, 0.85f);
+		setGridConst(gbl, gbc, clist,   0, 5, 5, 1, 1.0f, 0.85f);
 		panel.add(clist);
 	}
 	
@@ -424,27 +441,30 @@ public class MainView extends JFrame {
 		this.list.removeAll();
 		int cnt = 0;
 		
-		gbc_c.weightx = 1.0;
-		gbc_c.weighty = 1.0;
-		
 		for(String column : columns) {
 			String[] c = column.split(",");
 			
 			JLabel jl0 = new JLabel(c[0]);
-			setGridConst(gbl_c, gbc_c, jl0, 0, cnt++, 1, 1,  0.1f, 0.03f);
+			jl0.setBorder(BorderFactory.createLineBorder(Color.black));
+			setGridConst(gbl_c, gbc_c, jl0, 0, cnt, 1, 1,  0.25f, 0.03f);
 			this.list.add(jl0);
 
 			JLabel jl1 = new JLabel(c[1]);
-			setGridConst(gbl_c, gbc_c, jl1,  1, cnt++, 1, 1, 0.25f, 0.03f);
+			jl1.setBorder(BorderFactory.createLineBorder(Color.black));
+			setGridConst(gbl_c, gbc_c, jl1,  1, cnt, 1, 1, 0.25f, 0.03f);
 			this.list.add(jl1);
 
 			JLabel jl2 = new JLabel(c[2]);
-			setGridConst(gbl_c, gbc_c, jl2, 2, cnt++, 1, 1, 0.25f, 0.03f);
+			jl2.setBorder(BorderFactory.createLineBorder(Color.black));
+			setGridConst(gbl_c, gbc_c, jl2, 2, cnt, 1, 1, 0.25f, 0.03f);
 			this.list.add(jl2);
 
 			JLabel jl3 = new JLabel(c[3]);
-			setGridConst(gbl_c, gbc_c, jl3,  3, cnt++, 2, 1,  0.4f, 0.03f);
+			jl3.setBorder(BorderFactory.createLineBorder(Color.black));
+			setGridConst(gbl_c, gbc_c, jl3,  3, cnt, 1, 1,  0.25f, 0.03f);
 			this.list.add(jl3);
+			
+			cnt++;
 		}
 	}
 	
